@@ -1,11 +1,11 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
-
-# Рабочая версия для перевода. Включает функции извлечения текста и замены
+# Разрабатываемая версия переводчика. Могут не работать некоторые функции рабочей версии
 
 import tkinter as tk
 import  tkinter.messagebox as mb
 from tkinter.ttk import Button,Style
+import tkinter.filedialog as fd
 import os
 import json
 import utilities as ut
@@ -24,14 +24,14 @@ class Translator(tk.Frame):
 		self.pack(fill=tk.BOTH, expand=1)
 		self.centerWindow()
 
-		btn_file = Button(self, text="Select file",command=self.select_file)
+		btn_file = Button(self, text="Select mod",command=self.select_mod)
 		btn_file.place(x=5, y=270)	
 
 		btn_replace = Button(self, text='Replace text',command=self.replacer)
 		btn_replace.place(x=85,y=270)
 
-		# btn_replace = Button(self, text='Settings',command=self.settings)
-		# btn_replace.place(x=165,y=270)
+		btn_settings = Button(self, text='Settings',command=self.open_settings)
+		btn_settings.place(x=165,y=270)
 
 	def centerWindow(self):
 		w = 300
@@ -44,35 +44,35 @@ class Translator(tk.Frame):
 		y = (sh-h)/2
 		self.parent.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
-	def select_file(self):
-		global file
-		file = ut.get_file()
+	def select_mod(self):
+		global folder
+		folder = fd.askdirectory()
+		folder_name = os.path.basename(folder)
 
-		response =  mb.askyesnocancel('Запись файла', 'Перезаписать файл?')
+		response =  mb.askyesno('Извлечение строк', 'Извлечь строки?')
 		if response == False:
 			print('Joppa')
 		elif response == True:
-			global folder
-			folder = ut.creating_folder(file)
+			ut.create_folder(folder, folder_name)
 
-			global objects
-			objects = ut.open_file(file)
+		# 	global objects
+		# 	objects = ut.open_file(file)
 
-			names = open(folder+'\\names.txt','w')
-			descriptions = open(folder+'\\description.txt','w')
-			comments = open(folder+'\\comments.txt','w')
-			mo_mess = open(folder+'\\mo_mes.txt','w')
+		# 	names = open(folder+'\\names.txt','w')
+		# 	descriptions = open(folder+'\\description.txt','w')
+		# 	comments = open(folder+'\\comments.txt','w')
+		# 	mo_mess = open(folder+'\\mo_mes.txt','w')
 
-			for item in objects:
-				tags = item.keys()
-				if 'name' in tags:
-					ut.get_names(item, names)
-				if 'description' in tags:
-					ut.get_desctiption(item, descriptions)
-				if '//' in tags:
-					ut.get_comments(item, comments)
-				if 'special_attacks' in tags:
-					ut.get_mo_mes(item['special_attacks'], mo_mess)
+		# 	for item in objects:
+		# 		tags = item.keys()
+		# 		if 'name' in tags:
+		# 			ut.get_names(item, names)
+		# 		if 'description' in tags:
+		# 			ut.get_desctiption(item, descriptions)
+		# 		if '//' in tags:
+		# 			ut.get_comments(item, comments)
+		# 		if 'special_attacks' in tags:
+		# 			ut.get_mo_mes(item['special_attacks'], mo_mess)
 
 	def replacer(self):
 		if file == 'NONE':
@@ -127,19 +127,30 @@ class Translator(tk.Frame):
 						text.write (',\n')
 				print ('\n]',  file = text)
 
-# class Settings()
+	def open_settings(self):
+		settings = Settings(self)
+		settings.grab_set()
+		
+
+class Settings(tk.Toplevel):
+	def __init__(self, parent,background="dark grey"):
+
+		super().__init__(parent)
+		self.parent = parent
+		self.title("Settings")
+		self.geometry('250x100+200+100')
+		self.parent.pack(fill=tk.BOTH, expand=1)
+
+		self.button = tk.Button(self, text = "...", command = self.destroy)
+		self.button.pack (side = tk.RIGHT, padx = 10, pady = 10)
+
+
+
 
 def main():
 	root = tk.Tk()
 	app = Translator(root)
 	root.mainloop()  
-
-# def get_file():
-# 	filetypes = (("json files", "*.json"),("all files", "*"))
-# 	filename = fd.askopenfilename(title="Select file", initialdir= Path.cwd()/'mods', filetypes=filetypes)
-# 	if filename:
-# 		file = os.path.basename(filename)
-# 		return file
 		
 if __name__ == '__main__':
 	main()

@@ -33,10 +33,9 @@ def open_file(file):
 	objects = json.loads(text)
 	return objects
 
-def create_folder(name):
-	path = "strings/"+name
+def create_folder( folder_path, name):
 	try:
-		os.mkdir(path)
+		os.mkdir(folder_path)
 	except OSError:
 		print(f'Папка {name} уже создана.')
 	else:
@@ -45,10 +44,6 @@ def create_folder(name):
 def creating_folder(name):
 	folder = file_name('folder', name)
 	return str(folder)
-
-def files_check (folder):
-	files = os.listdir(folder)
-	print (files)
 
 ### Extractor's functions ###
 

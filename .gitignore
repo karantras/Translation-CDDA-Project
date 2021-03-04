@@ -1,4 +1,6 @@
 files
-mod
+mods
 translated
+strings
 __pycache__
+test.py
