@@ -1,94 +1,141 @@
 # -*- coding: utf-8 -*-
+
 import os
 import json
 import tkinter.filedialog as fd
 from pathlib import Path
+from configparser import ConfigParser
 
-def get_file():
-	filetypes = (("json files", "*.json"),("all files", "*"))
-	filename = fd.askopenfilename(title="Select file", initialdir= Path.cwd()/'mods', filetypes=filetypes)
-	if filename:
-		file = os.path.basename(filename)
-		return file
 
-def file_name(cond, filename):
-	folder = filename.rpartition('.')[0] 
-	if cond == 'folder':
-		path  = "strings\\" + folder
-		if os.path.exists(path) == False:
-			create_folder(folder)
-		else:
-			print(f'Папка {folder} уже создана')
-		return path
-	elif cond == 'json':
-		path = 'mods\\'+ filename
-		return path
-	elif cond == 'translated':
-		path = 'translated\\'+ filename
-		return path
+configs = ConfigParser()
+configs.read('config.ini')
+mods_folder = configs.get('Folders', 'Mods Folder')
+base_folder = configs.get('Folders', 'Translator Folder')
+ignorable = {
+    "ascii_art",
+    "ammo_effect",
+    "behavior",
+    "butchery_requirement",
+    "charge_removal_blacklist",
+    "city_building",
+    "colordef",
+    "disease_type",
+    "emit",
+    "enchantment",
+    "event_transformation",
+    "EXTERNAL_OPTION",
+    "hit_range",
+    "ITEM_BLACKLIST",
+    "item_group",
+    "MIGRATION",
+    "mod_tileset",
+    "monster_adjustment",
+    "MONSTER_BLACKLIST",
+    "MONSTER_FACTION",
+    "monstergroup",
+    "MONSTER_WHITELIST",
+    "mutation_type",
+    "obsolete_terrain",
+    "overlay_order",
+    "overmap_connection",
+    "overmap_location",
+    "overmap_special",
+    "profession_item_substitutions",
+    "region_overlay",
+    "region_settings",
+    "relic_procgen_data",
+    "requirement",
+    "rotatable_symbol",
+    "SCENARIO_BLACKLIST",
+    "scent_type",
+    "score",
+    "skill_boost",
+    "TRAIT_BLACKLIST",
+    "trait_group",
+    "uncraft",
+    "vehicle_group",
+    "vehicle_placement",
+}
+
+def extractor (path, mod):
+	for root, dirs, files in os.walk(path):
+		for _file in files:
+			file =_file[ : _file.find(".json") - 0]
+
+			if file not in ignorable:
+				if _file.endswith(".json"):
+					objects = open_file(root+"\\"+_file)
+
+					check = False
+					names = []
+					desc = []
+					comment = []
+					mo_mess = []
+
+					for item in objects:
+						tags = item.keys()
+
+						if 'name' in tags:
+							names.append(item['name'])
+							check = True
+
+						if 'description' in tags:
+							if '\n' in item['description']:
+								item['description'] =  item['description'].replace('\n','\\n')
+							desc.append(item['description'])
+							check = True
+
+						if '//' in tags:
+							comment.append(item['//'])
+							check = True
+
+					if check:
+						new_root = root.replace("\\mods\\","\\strings\\")
+						file_path = new_root+"\\"+file+".txt"
+
+						if not os.path.exists(new_root):
+							os.makedirs(new_root)
+
+						writer(file, file_path, names, desc, comment, mo_mess)
+	print("DONE")
+
 
 def open_file(file):
-	with open ("mods\\"+file,'r',encoding = 'utf-8') as t:
+	with open (file,'r',encoding = 'utf-8') as t:
 		text = t.read()
 	objects = json.loads(text)
 	return objects
 
-def create_folder( folder_path, name):
-	try:
-		os.mkdir(folder_path)
-	except OSError:
-		print(f'Папка {name} уже создана.')
-	else:
-		print(f'Создана папка с файлами {name}.')
+def writer (file, path, names, desc, comment, mo_mess):
+	with open(path,"w+",encoding = 'utf-8') as file:
+	
+		### Names ###
+		if len(names) != 0: 
+			file.write("[Names]"+"\n")
+			for name in names:
+				if type(name) == dict:
+					for item in name.values():
+						file.write(item + "\n")
+				elif type(name) == list:
+					file.write("".join(str(x) for x in name)+"\n") 
 
-def creating_folder(name):
-	folder = file_name('folder', name)
-	return str(folder)
+				else:
+					file.write(name + '\n')
+			file.write("\n")
 
-### Extractor's functions ###
+		### Names ###
+		if len(desc) != 0: 
+			file.write("[Descriptions]"+"\n")
+			for item in desc:
+				if type(item) == list:
+					file.write("".join(str(x) for x in item)+"\n") 
+				else:
+					file.write(item +"\n")
+			file.write("\n")
 
-def get_names(item, names):
-	name = item['name']
-	if type(name) == dict:
-		for item in name.values():
-			names.write(item +'\n')
-	else:
-		names.write(name +'\n')
-
-def get_desctiption(item, descriptions):
-	if '\n' in item['description']:
-		item['description'] =  item['description'].replace('\n','\\n')
-	description = item['description']
-	descriptions.write(description +'\n')
-
-def get_comments(item, comments):
-	comment = item["//"]
-	comments.write(comment +'\n')
-
-def get_mo_mes(item, mo_mess):
-	for x in item:
-		if type(x) == dict:
-			if 'monster_message' in x.keys():
-				mo_mes =  x['monster_message']
-				mo_mess.write(mo_mes +'\n')
-
-
-### Formating functions ###
-
-def is_str(value):
-	if '"' in value:
-		value = value.replace('"','\\"')
-	new_string = '"' + value +'"'
-	return new_string
-
-def is_bool(value):
-	new_value = str(value)
-	return(new_value.lower())
-
-def is_list_dict(value):
-	new_string = str(value)
-	new_string = new_string.replace("'", '"')
-	new_string = new_string.replace('"s ',"'s ")
-	if "False"in new_string:
-		new_string = new_string.replace('False',"false")
-	return new_string
+		### Comments ###
+		if len(comment) != 0:
+			file.write("[Comments]"+"\n")
+			for item in comment:
+				file.write(item+"\n")
+			file.write("\n")

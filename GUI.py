@@ -30,9 +30,6 @@ class Translator(tk.Frame):
 		btn_replace = Button(self, text='Replace text',command=self.replacer)
 		btn_replace.place(x=85,y=270)
 
-		# btn_replace = Button(self, text='Settings',command=self.settings)
-		# btn_replace.place(x=165,y=270)
-
 	def centerWindow(self):
 		w = 300
 		h = 300
