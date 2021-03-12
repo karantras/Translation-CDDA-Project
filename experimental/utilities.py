@@ -9,8 +9,9 @@ from configparser import ConfigParser
 
 configs = ConfigParser()
 configs.read('config.ini')
-mods_folder = configs.get('Folders', 'Mods Folder')
 base_folder = configs.get('Folders', 'Translator Folder')
+mods_folder = configs.get('Folders', 'Translator Folder')+"\\mods"
+string_folder = configs.get('Folders', 'Translator Folder')+"\\strings\\"
 ignorable = {
     "ascii_art",
     "ammo_effect",
@@ -57,6 +58,13 @@ ignorable = {
     "vehicle_placement",
 }
 
+names = []
+desc  = []
+key_words = ["[Names]","[Descriptions]"]
+temp_list = []
+
+####### Extractor functions ######
+
 def extractor (path, mod):
 	for root, dirs, files in os.walk(path):
 		for _file in files:
@@ -83,6 +91,12 @@ def extractor (path, mod):
 							if '\n' in item['description']:
 								item['description'] =  item['description'].replace('\n','\\n')
 							desc.append(item['description'])
+							check = True
+
+						elif 'desc' in tags:
+							if '\n' in item['desc']:
+								item['desc'] =  item['desc'].replace('\n','\\n')
+							desc.append(item['desc'])
 							check = True
 
 						if '//' in tags:
@@ -123,7 +137,7 @@ def writer (file, path, names, desc, comment, mo_mess):
 					file.write(name + '\n')
 			file.write("\n")
 
-		### Names ###
+		### Descriptions ###
 		if len(desc) != 0: 
 			file.write("[Descriptions]"+"\n")
 			for item in desc:
@@ -139,3 +153,147 @@ def writer (file, path, names, desc, comment, mo_mess):
 			for item in comment:
 				file.write(item+"\n")
 			file.write("\n")
+	file.close()
+
+####### Replacer functions ######
+
+def replacer(path, str_path, mod):
+	for root, dirs, files in os.walk(str_path+ "\\" +mod):
+		for file in files: 
+			list_converter(root+"\\"+file, 0)
+
+			print(file)
+			new_root = root.replace("\\strings\\", "\\mods\\")
+			filename = new_root+"\\" + file.replace(".txt", ".json")
+
+			objects = open_file(filename)
+			global temp_list
+
+			for item in objects:
+				for key, value in item.items():
+
+					if key == "name":
+						if type(value) == list:
+							temp_list.append(names)
+							item[key] = temp_list.pop(0)
+
+						elif type(value) == dict:
+							new_dict = item['name']
+							for key, value in item['name'].items():
+								value = names.pop(0)
+								new_dict[key] = value
+
+						else:
+							item[key] = names.pop(0)
+					if key == "desc":
+						if type(value) == list:
+							temp_list.append(desc)
+							item[key] = temp_list.pop(0)
+						else:
+							item[key]  = desc.pop(0)
+					if key == "description":
+						item[key]  = desc.pop(0)
+
+			translated_root = root.replace("\\strings\\","\\translated\\")
+			f_filename = translated_root+"\\"+ file.replace(".txt", ".json")
+
+			if not os.path.exists(translated_root):
+				os.makedirs(translated_root)
+			
+			with open (f_filename, 'w', encoding = 'utf-8' ) as text:
+				print("[", file =text)
+				count_1 = len(objects)
+
+				for record in objects:
+					print('  {', file = text)
+					count_1 -= 1
+					count_m = len(record)
+
+					for key, value in record.items():
+						count_m -= 1
+						text.write(f'    "{key}": ')
+
+						if type(value) == bool:
+							text.write(is_bool(value))
+						elif type(value) == str:
+							text.write(is_str(value))
+						elif type(value) == int:
+							text.write(f'{value}')
+						elif type(value) == dict or type(value) == list:
+							text.write(is_list_dict(value))
+						if count_m != 0:
+							text.write(',')
+
+						text.write(f"\n")
+					text.write ('  }')
+					if count_1 != 0:
+						text.write (',\n')
+				print(f"\n]", file = text)
+
+def list_converter (file, index):
+	with open (file, 'r', encoding = 'utf-8') as f:
+		strings = f.read().splitlines()
+		strings = [x for x in strings if x]
+
+		global names
+		names = []
+		global desc
+		desc  = []
+
+		for x in strings:
+			if x == "[Names]":
+				index = list_writer(names, strings, index)
+
+			if x == "[Descriptions]":
+				index = list_writer(desc, strings, index)
+
+def open_file(file):
+	with open (file,'r',encoding = 'utf-8') as t:
+		text = t.read()
+	objects = json.loads(text)
+	return objects
+
+def list_writer(e_list, strings, index):
+	for item in strings[1+index:]:
+		index += 1	
+		if item in key_words:
+			break
+		else:
+			e_list.append(item)
+	return index
+
+def format_check( e_list, temp_list):
+	temp_list.clear()
+	temp_list.append(e_list.pop(0))
+
+	return temp_list
+
+### Formating functions ###
+
+def is_str(value):
+	if '"' in value:
+		value = value.replace('"','\\"')
+	new_string = '"' + value +'"'
+	return new_string
+
+def is_bool(value):
+	new_value = str(value)
+	return(new_value.lower())
+
+def is_list_dict(value):
+	new_string = str(value)
+	new_string = new_string.replace("'", '"')
+	new_string = new_string.replace('"s ',"'s ")
+	new_string = new_string.replace('["', '[ "')
+	new_string = new_string.replace('"]', '" ]')
+	new_string = new_string.replace('{"', '{ "')
+	new_string = new_string.replace('}', ' }')
+
+
+	if "False"in new_string:
+		new_string = new_string.replace('False',"false")
+
+	return new_string
+
+# replacer (mods_folder, string_folder, 'No-Hope-master')
+# extractor (mods_folder, 'No-Hope-master')

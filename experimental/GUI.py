@@ -51,6 +51,8 @@ class Translator(tk.Frame):
 	def replacer(self):
 		if mod == "NONE":
 			print("Сначала выберите мод")
+		else: 
+			ut.replacer(ut.mods_folder, ut.string_folder, mod)
 
 	def extractor(self):
 		if mod == "NONE":
