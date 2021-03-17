@@ -1,34 +1,36 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 
-# Рабочая версия для перевода. Включает функции извлечения текста и замены
-
 import tkinter as tk
 import  tkinter.messagebox as mb
 from tkinter.ttk import Button,Style
+import tkinter.filedialog as fd
 import os
 import json
 import utilities as ut
 
-folder = 'NONE'
+mod = 'No-Hope-master'
 file = "NONE"
 objects = []
 
 class Translator(tk.Frame):
 	
 	def __init__(self, parent):
-		tk.Frame.__init__(self, parent, background="dark grey")   
+		tk.Frame.__init__(self, parent, background="#334")   
 		self.parent = parent
 		self.name = 'name'
 		self.parent.title("CDDA Translator")
 		self.pack(fill=tk.BOTH, expand=1)
 		self.centerWindow()
 
-		btn_file = Button(self, text="Select file",command=self.select_file)
-		btn_file.place(x=5, y=270)	
+		btn_file = Button(self, text="Select mod",command=self.select_mod)
+		btn_file.place(x=5, y=10)	
 
 		btn_replace = Button(self, text='Replace text',command=self.replacer)
-		btn_replace.place(x=85,y=270)
+		btn_replace.place(x=173,y=10)
+
+		btn_settings = Button(self, text='Extract strings',command=self.extractor)
+		btn_settings.place(x=85,y=10)
 
 	def centerWindow(self):
 		w = 300
@@ -41,102 +43,27 @@ class Translator(tk.Frame):
 		y = (sh-h)/2
 		self.parent.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
-	def select_file(self):
-		global file
-		file = ut.get_file()
-
-		response =  mb.askyesnocancel('Запись файла', 'Перезаписать файл?')
-		if response == False:
-			print('Joppa')
-		elif response == True:
-			global folder
-			folder = ut.creating_folder(file)
-
-			global objects
-			objects = ut.open_file(file)
-
-			names = open(folder+'\\names.txt','w')
-			descriptions = open(folder+'\\description.txt','w')
-			comments = open(folder+'\\comments.txt','w')
-			mo_mess = open(folder+'\\mo_mes.txt','w')
-
-			for item in objects:
-				tags = item.keys()
-				if 'name' in tags:
-					ut.get_names(item, names)
-				if 'description' in tags:
-					ut.get_desctiption(item, descriptions)
-				if '//' in tags:
-					ut.get_comments(item, comments)
-				if 'special_attacks' in tags:
-					ut.get_mo_mes(item['special_attacks'], mo_mess)
+	def select_mod(self):
+		global mod
+		mod_path = fd.askdirectory()
+		mod = os.path.basename(mod_path)
 
 	def replacer(self):
-		if file == 'NONE':
-			print('You must select a file first.')
+		if mod == "NONE":
+			print("Сначала выберите мод")
+		else: 
+			ut.replacer(ut.mods_folder, ut.string_folder, mod)
+
+	def extractor(self):
+		if mod == "NONE":
+			print("Сначала выберите мод")
 		else:
-			with open(folder+'\\names.txt',"r", encoding = 'utf-8') as n:
-				names = n.read().splitlines()
-			with open(folder+'\\description.txt', "r", encoding = 'utf-8') as n:
-				descriptions = n.read().splitlines()
-			with open(folder+'\\comments.txt',  "r", encoding = 'utf-8') as n:
-				comments = n.read().splitlines()
-
-			for item in objects:
-				tags = item.keys()
-				if 'name' in tags:
-					if type(item['name']) == dict:
-						new_dict = item['name']
-						for key, value in item['name'].items():
-							value = names.pop(0)
-							new_dict[key] = value
-					else:
-						item['name'] = names.pop(0)
-				if 'description' in tags:
-					item['description'] = descriptions.pop(0)
-				if '//' in tags:
-					item['//'] = comments.pop(0)
-
-			with open(ut.file_name('translated', file), 'w', encoding = 'utf-8' ) as text:
-				print ('[',  file = text)
-				count_1 = len(objects)
-				for record in objects:
-					count_1 -= 1
-					print('  {', file = text)
-					count = len(record)
-					for key, value in record.items():
-						count -= 1
-						text.write(f'    "{key}": ')
-						if type(value) == bool:
-							text.write(ut.is_bool(value))
-						if type(value) == str:
-							text.write(ut.is_str(value))
-						elif type(value) == int:
-							text.write(f'{value}')
-						elif type(value) == dict or type(value) == list:
-							text.write(ut.is_list_dict(value))
-						if count != 0:
-							text.write(',')
-
-						text.write(f"\n")
-					text.write ('  }')
-					if count_1 != 0:
-						text.write (',\n')
-				print ('\n]',  file = text)
-
-# class Settings()
+			ut.extractor(ut.mods_folder, mod)
 
 def main():
 	root = tk.Tk()
 	app = Translator(root)
 	root.mainloop()  
-
-# def get_file():
-# 	filetypes = (("json files", "*.json"),("all files", "*"))
-# 	filename = fd.askopenfilename(title="Select file", initialdir= Path.cwd()/'mods', filetypes=filetypes)
-# 	if filename:
-# 		file = os.path.basename(filename)
-# 		return file
 		
 if __name__ == '__main__':
 	main()
