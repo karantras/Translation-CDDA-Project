@@ -12,6 +12,7 @@ configs.read('config.ini')
 base_folder = configs.get('Folders', 'Translator Folder')
 mods_folder = configs.get('Folders', 'Translator Folder')+"\\mods"
 string_folder = configs.get('Folders', 'Translator Folder')+"\\strings\\"
+
 ignorable = {
     "ascii_art",
     "ammo_effect",
@@ -60,14 +61,20 @@ ignorable = {
 
 names = []
 desc  = []
-key_words = ["[Names]","[Descriptions]"]
+
+key_words = ["[Names]","[Descriptions]", "[Job description]"]
 temp_list = []
-x = 0
+j_desc = []
+
 ####### Extractor functions ######
 
 def extractor (path, mod):
-	for root, dirs, files in os.walk(path):
+	for root, dirs, files in os.walk(path + "\\" + mod):
 		for _file in files:
+
+			global names
+			global desc
+			global j_desc
 
 			file =_file[ : _file.find(".json") - 0]
 			if file not in ignorable:
@@ -81,11 +88,7 @@ def extractor (path, mod):
 						objects = open_file(root+"\\"+_file)
 
 						check = False
-						names = []
-						desc = []
-						comment = []
-						mo_mess = []
-
+					
 						for item in objects:
 							tags = item.keys()
 
@@ -105,9 +108,13 @@ def extractor (path, mod):
 								desc.append(item['desc'])
 								check = True
 
-							if '//' in tags:
-								comment.append(item['//'])
+							if "job_description" in tags:
+								j_desc.append(item['job_description'])
 								check = True
+								
+							# # if '//' in tags:
+							# # 	comment.append(item['//'])
+							# # 	check = True
 
 						if check:
 							new_root = root.replace("\\mods\\","\\strings\\")
@@ -116,8 +123,13 @@ def extractor (path, mod):
 							if not os.path.exists(new_root):
 								os.makedirs(new_root)
 
-							writer(file, file_path, names, desc, comment, mo_mess)
+
+							writer(file, file_path, names, desc, j_desc)
 							print(f"Strings from {file} succefuly extracted")
+			names.clear()
+			desc.clear()
+			j_desc.clear()
+		
 	print("DONE")
 
 
@@ -127,12 +139,12 @@ def open_file(file):
 	objects = json.loads(text)
 	return objects
 
-def writer (file, path, names, desc, comment, mo_mess):
+def writer (file, path, names, desc, j_desc):
 	with open(path,"w+",encoding = 'utf-8') as file:
 	
 		### Names ###
 		if len(names) != 0: 
-			file.write("[Names]"+"\n")
+			file.write("[Names]\n")
 			for name in names:
 				if type(name) == dict:
 					for item in name.values():
@@ -146,26 +158,34 @@ def writer (file, path, names, desc, comment, mo_mess):
 
 		### Descriptions ###
 		if len(desc) != 0: 
-			file.write("[Descriptions]"+"\n")
+			file.write("[Descriptions]\n")
 			for item in desc:
-				if type(item) == list:
+				if type(item) == list or type(item) == dict:
 					file.write("".join(str(x) for x in item)+"\n") 
 				else:
-					file.write(item +"\n")
+					file.write(item + "\n")
+			file.write("\n")
+
+		if len(j_desc) != 0:
+			file.write("[Job description]\n")
+			for item in j_desc:
+				file.write(item + "\n")
 			file.write("\n")
 
 		### Comments ###
-		if len(comment) != 0:
-			file.write("[Comments]"+"\n")
-			for item in comment:
-				file.write(item+"\n")
-			file.write("\n")
+		# if len(comment) != 0:
+		# 	file.write("[Comments]"+"\n")
+		# 	for item in comment:
+		# 		file.write(item+"\n")
+		# 	file.write("\n")
 
 ####### Replacer functions ######
 
 def replacer(path, str_path, mod):
-	for root, dirs, files in os.walk(str_path+ "\\" +mod):
+	for root, dirs, files in os.walk(str_path+ "\\" + mod):
 		for file in files: 
+
+			### Замена строк ###
 			list_converter(root+"\\"+file, 0)
 
 			print(file)
@@ -191,14 +211,19 @@ def replacer(path, str_path, mod):
 
 						else:
 							item[key] = names.pop(0)
+
 					if key == "desc":
 						if type(value) == list:
 							temp_list.append(desc)
 							item[key] = temp_list.pop(0)
 						else:
 							item[key]  = desc.pop(0)
+
 					if key == "description":
 						item[key]  = desc.pop(0)
+
+					if key == "job_description":
+						item[key] = j_desc.pop(0)
 
 			translated_root = root.replace("\\strings\\","\\translated\\")
 			f_filename = translated_root+"\\"+ file.replace(".txt", ".json")
@@ -206,6 +231,7 @@ def replacer(path, str_path, mod):
 			if not os.path.exists(translated_root):
 				os.makedirs(translated_root)
 			
+			### Запись файла ###
 			with open (f_filename, 'w', encoding = 'utf-8' ) as text:
 				print("[", file =text)
 				count_1 = len(objects)
@@ -236,15 +262,18 @@ def replacer(path, str_path, mod):
 						text.write (',\n')
 				print(f"\n]", file = text)
 
+			names.clear()
+			desc.clear()
+			j_desc.clear()
+
 def list_converter (file, index):
 	with open (file, 'r', encoding = 'utf-8') as f:
 		strings = f.read().splitlines()
 		strings = [x for x in strings if x]
 
 		global names
-		names = []
 		global desc
-		desc  = []
+		global j_desc
 
 		for x in strings:
 			if x == "[Names]":
@@ -252,6 +281,10 @@ def list_converter (file, index):
 
 			if x == "[Descriptions]":
 				index = list_writer(desc, strings, index)
+
+			if x == "[Job description]":
+				index = list_writer(j_desc, strings, index)
+
 
 def open_file(file):
 	with open (file,'r',encoding = 'utf-8') as t:
@@ -261,11 +294,12 @@ def open_file(file):
 
 def list_writer(e_list, strings, index):
 	for item in strings[1+index:]:
-		index += 1	
+		index += 1
 		if item in key_words:
 			break
 		else:
 			e_list.append(item)
+	print(e_list)
 	return index
 
 def format_check( e_list, temp_list):
@@ -296,9 +330,12 @@ def is_list_dict(value):
 	new_string = new_string.replace('}', ' }')
 
 
-	if "False"in new_string:
+	if "False" in new_string:
 		new_string = new_string.replace('False',"false")
+	if "True" in new_string:
+		new_string = new_string.replace('True','true')
 
 	return new_string
 
-extractor(mods_folder, 'No-Hope-master')
+# extractor(mods_folder, 'No-Hope-master')
+replacer(mods_folder, string_folder, 'No-Hope-master')

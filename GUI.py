@@ -10,8 +10,6 @@ import json
 import utilities as ut
 
 mod = 'No-Hope-master'
-file = "NONE"
-objects = []
 
 class Translator(tk.Frame):
 	
