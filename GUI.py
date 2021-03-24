@@ -6,7 +6,6 @@ import  tkinter.messagebox as mb
 from tkinter.ttk import Button,Style
 import tkinter.filedialog as fd
 import os
-import json
 import utilities as ut
 
 mod = 'No-Hope-master'
