@@ -47,13 +47,13 @@ class Translator(tk.Frame):
 		if ut.mod == "NONE":
 			print("Сначала выберите мод")
 		else: 
-			ut.converter( ut.string_folder, ut.mod)
+			ut.converter( ut.string_folder)
 
 	def extractor(self):
 		if ut.mod == "NONE":
 			print("Сначала выберите мод")
 		else:
-			ut.extractor(ut.mods_folder, ut.mod)
+			ut.extractor(ut.mods_folder)
 
 def main():
 	root = tk.Tk()
