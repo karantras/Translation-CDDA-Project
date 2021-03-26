@@ -1,8 +1,13 @@
 files
-mods
+/mods/
 translated
 strings
 __pycache__
 test.py
 utilities_2.py
 raw
+images
+build 
+GUI.spec
+icon.ico
+utilities.py

@@ -10,7 +10,7 @@ configs = ConfigParser()
 configs.read('configs.ini')
 mod = configs.get('Mods', 'mod')
 game_folder = configs.get('Folders', 'Game Folder')
-mods_folder = configs.get('Folders', 'Translator Folder')+"\\mods"+ mod
+mods_folder = configs.get('Folders', 'Translator Folder')+"\\mods\\"+ mod
 string_folder = configs.get('Folders', 'Translator Folder')+"\\strings\\"+ mod
 
 ignorable = {
@@ -72,6 +72,8 @@ def select_mod():
 
 	global mod
 	mod = os.path.basename(mod_path)
+	if '%' in mod:
+		mod = mod.replace('%', '%%')
 	configs['Mods']['Mod'] = mod
 
 	with open ('configs.ini', 'w') as configfiles:
@@ -123,6 +125,8 @@ def get_items_tags(item, tags, names, desc, j_desc, start_name, check):
 	return check
 
 def extractor (path):
+	print(path)
+	if mod != 'NONE':
 		for root, dirs, files in os.walk(path):
 			for _file in files:
 
@@ -135,9 +139,9 @@ def extractor (path):
 				if file not in ignorable:
 
 					string_f =  root.replace( "\\mods\\","\\strings\\")
-
 					if os.path.isfile(string_f+"\\"+file+".txt") == True:
 						print(f"{file.title()}'s strings have aleady extracted")
+
 					else:
 
 					# if file == "effects":
@@ -167,13 +171,13 @@ def extractor (path):
 									os.makedirs(new_root)
 
 								strings_writer(file, file_path, names, desc, j_desc, start_name)
-								print(f"Strings from {file}.json succefuly extracted")
+								# print(f"Strings from {file}.json succefuly extracted")
 				names.clear()
 				desc.clear()
 				j_desc.clear()
 				start_name.clear()
 			
-		print("DONE")
+	print("DONE")
 
 def open_file(file):
 	with open (file,'r', encoding = 'utf-8') as t:
@@ -414,6 +418,6 @@ def is_list_dict(value):
 	return new_string
 
 # print(select_mod())
-# extractor(mods_folder, mod)
-# replacer(mods_folder, string_folder, mod)
-converter(string_folder)
+# extractor(mods_folder)
+# # replacer(mods_folder, string_folder, mod)
+# converter(string_folder)

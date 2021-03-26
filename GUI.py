@@ -26,9 +26,6 @@ class Translator(tk.Frame):
 		btn_settings = Button(self, text='Extract strings',command=self.extractor)
 		btn_settings.place(x=85,y=10)
 
-		# logs = tk.Text(width= 35, height=  105, bg="white", fg='white')
-		# logs.pack(fill=tk.left, expand=True)
-
 	def centerWindow(self):
 		w = 300
 		h = 300
@@ -47,17 +44,18 @@ class Translator(tk.Frame):
 		if ut.mod == "NONE":
 			print("Сначала выберите мод")
 		else: 
-			ut.converter( ut.string_folder, ut.mod)
+			ut.converter( ut.string_folder)
 
 	def extractor(self):
 		if ut.mod == "NONE":
 			print("Сначала выберите мод")
 		else:
-			ut.extractor(ut.mods_folder, ut.mod)
+			ut.extractor(ut.mods_folder)
 
 def main():
 	root = tk.Tk()
 	app = Translator(root)
+	root.iconbitmap('icon.ico')
 	root.mainloop()  
 		
 if __name__ == '__main__':
