@@ -3,12 +3,9 @@
 
 import tkinter as tk
 import  tkinter.messagebox as mb
-from tkinter.ttk import Button,Style
-import tkinter.filedialog as fd
+from tkinter.ttk import Button, Style
 import os
 import utilities as ut
-
-mod = 'No-Hope-master'
 
 class Translator(tk.Frame):
 	
@@ -23,11 +20,14 @@ class Translator(tk.Frame):
 		btn_file = Button(self, text="Select mod",command=self.select_mod)
 		btn_file.place(x=5, y=10)	
 
-		btn_replace = Button(self, text='Replace text',command=self.replacer)
+		btn_replace = Button(self, text='Convert strings',command=self.replacer)
 		btn_replace.place(x=173,y=10)
 
 		btn_settings = Button(self, text='Extract strings',command=self.extractor)
 		btn_settings.place(x=85,y=10)
+
+		# logs = tk.Text(width= 35, height=  105, bg="white", fg='white')
+		# logs.pack(fill=tk.left, expand=True)
 
 	def centerWindow(self):
 		w = 300
@@ -41,21 +41,19 @@ class Translator(tk.Frame):
 		self.parent.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
 	def select_mod(self):
-		global mod
-		mod_path = fd.askdirectory()
-		mod = os.path.basename(mod_path)
+		ut.select_mod()
 
 	def replacer(self):
-		if mod == "NONE":
+		if ut.mod == "NONE":
 			print("Сначала выберите мод")
 		else: 
-			ut.replacer(ut.mods_folder, ut.string_folder, mod)
+			ut.converter( ut.string_folder, ut.mod)
 
 	def extractor(self):
-		if mod == "NONE":
+		if ut.mod == "NONE":
 			print("Сначала выберите мод")
 		else:
-			ut.extractor(ut.mods_folder, mod)
+			ut.extractor(ut.mods_folder, ut.mod)
 
 def main():
 	root = tk.Tk()

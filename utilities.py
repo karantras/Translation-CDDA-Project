@@ -4,12 +4,14 @@ import os
 import json
 from pathlib import Path
 from configparser import ConfigParser
+import tkinter.filedialog as fd
 
 configs = ConfigParser()
-configs.read('config.ini')
-base_folder = configs.get('Folders', 'Translator Folder')
-mods_folder = configs.get('Folders', 'Translator Folder')+"\\mods"
-string_folder = configs.get('Folders', 'Translator Folder')+"\\strings\\"
+configs.read('configs.ini')
+mod = configs.get('Mods', 'mod')
+game_folder = configs.get('Folders', 'Game Folder')
+mods_folder = configs.get('Folders', 'Translator Folder')+"\\mods"+ mod
+string_folder = configs.get('Folders', 'Translator Folder')+"\\strings\\"+ mod
 
 ignorable = {
     "ascii_art",
@@ -63,8 +65,17 @@ j_desc = []
 start_name = []
 
 key_words = ["[Names]","[Descriptions]", "[Job description]", "[Start Name]"]
-# temp_list = []
 
+####### Mod selection's functions #######
+def select_mod():
+	mod_path = fd.askdirectory()
+
+	global mod
+	mod = os.path.basename(mod_path)
+	configs['Mods']['Mod'] = mod
+
+	with open ('configs.ini', 'w') as configfiles:
+		configs.write(configfiles)
 
 ####### Extractor's functions ######
 
@@ -84,15 +95,11 @@ def get_item(item, lis, tag):
 		for x in item[tag]:
 			if x != '':
 				lis.append(x)
-
 	else:
 		if '\n' in item[tag]:
 			item[tag] = item[tag].replace('\n','\\n')
 		lis.append(item[tag])	
 	
-
-
-
 def get_items_tags(item, tags, names, desc, j_desc, start_name, check):
 	if 'name' in tags:
 		get_item(item, names, "name")
@@ -115,66 +122,64 @@ def get_items_tags(item, tags, names, desc, j_desc, start_name, check):
 			check = True
 	return check
 
-def extractor (path, mod):
-	for root, dirs, files in os.walk(path + "\\" + mod):
-		for _file in files:
+def extractor (path):
+		for root, dirs, files in os.walk(path):
+			for _file in files:
 
-			global names
-			global desc
-			global j_desc
-			global start_name
+				global names
+				global desc
+				global j_desc
+				global start_name
 
-			file =_file[ : _file.find(".json") - 0]
-			if file not in ignorable:
+				file =_file[ : _file.find(".json") - 0]
+				if file not in ignorable:
 
-				string_f =  root.replace( "\\mods\\","\\strings\\")
+					string_f =  root.replace( "\\mods\\","\\strings\\")
 
-				# if os.path.isfile(string_f+"\\"+file+".txt") == True:
-				# 	print(f"{file.title()}'s strings have aleady extracted")
-				# else:
+					if os.path.isfile(string_f+"\\"+file+".txt") == True:
+						print(f"{file.title()}'s strings have aleady extracted")
+					else:
 
-				if file == "effects":
+					# if file == "effects":
 
-					if _file.endswith(".json"):
-						objects = open_file(root+"\\"+_file)
+						if _file.endswith(".json"):
+							objects = open_file(root+"\\"+_file)
 
-						check = False
+							check = False
 
-						for item in objects:
-							tags = item.keys()
-							check = get_items_tags(item, tags, names, desc, j_desc, start_name, check)
-					
-						names = cleaning(names)
-						desc = cleaning(desc)
+							for item in objects:
+								tags = item.keys()
+								check = get_items_tags(item, tags, names, desc, j_desc, start_name, check)
+						
+							names = cleaning(names)
+							desc = cleaning(desc)
 
-						if check:
-							raw_path = root.replace("\\mods\\", "\\raw\\")
-							new_root = root.replace("\\mods\\","\\strings\\")
+							if check:
+								raw_path = root.replace("\\mods\\", "\\raw\\")
+								new_root = root.replace("\\mods\\","\\strings\\")
 
-							file_path = new_root+"\\"+file+".txt"
+								file_path = new_root+"\\"+file+".txt"
 
-							if not os.path.exists(raw_path):
-								os.makedirs(raw_path)
+								if not os.path.exists(raw_path):
+									os.makedirs(raw_path)
 
-							if not os.path.exists(new_root):
-								os.makedirs(new_root)
+								if not os.path.exists(new_root):
+									os.makedirs(new_root)
 
-							strings_writer(file, file_path, names, desc, j_desc, start_name)
-							print(f"Strings from {file}.json succefuly extracted")
-			names.clear()
-			desc.clear()
-			j_desc.clear()
-			start_name.clear()
-		
-	print("DONE")
-
+								strings_writer(file, file_path, names, desc, j_desc, start_name)
+								print(f"Strings from {file}.json succefuly extracted")
+				names.clear()
+				desc.clear()
+				j_desc.clear()
+				start_name.clear()
+			
+		print("DONE")
 
 def open_file(file):
 	with open (file,'r', encoding = 'utf-8') as t:
 		text = t.read()
 	objects = json.loads(text)
 	return objects
-
 
 def strings_writer(file, path, names, desc, j_desc, start_name):
 	with open(path,"w+", encoding = 'utf-8') as file:
@@ -238,7 +243,6 @@ def list_converter (file, index):
 			if x == "[Start Name]":
 				index = list_writer(start_name, strings, index)
 
-
 def list_writer(e_list, strings, index):
 	for item in strings[1+index:]:
 		index += 1
@@ -246,13 +250,11 @@ def list_writer(e_list, strings, index):
 			break
 		else:
 			e_list.append(item)
-			# e_list = list(set(e_list))
 	return index
 
-def converter (strings, mod):
-	for root, dirs, files in os.walk(strings+"\\"+  mod):
+def converter (strings):
+	for root, dirs, files in os.walk(strings):
 		for file in files:
-			# print(file)
 
 			new_root = root.replace("\\strings\\", "\\mods\\")
 			filename = new_root+"\\" + file.replace(".txt", ".json")
@@ -320,15 +322,10 @@ def converter (strings, mod):
 
 			desc.clear()
 			names.clear()
-
-
+			print("Strings from  " + file + " were succefuly converted")
 
 def change_dict(dic, lis, index):
 	for item in dic.keys():
-
-		# print(index)
-		# print(dic[item])
-		# print(lis[index])
 		dic[item] = lis[index]
 		index += 1
 
@@ -336,8 +333,7 @@ def dict_writer(file, dic, name):
 	count = len(dic)
 	file.write('    "'+ name +'" : {\n')
 	for eng, rus in dic.items():
-		# print (eng)
-		# print(rus)
+
 		count -= 1
 		file.write('        "' + eng +'" : "' + rus + '"' )
 		if count != 0:
@@ -345,50 +341,6 @@ def dict_writer(file, dic, name):
 	file.write('\n    }')
 
 # def replacer(path, str_path, mod):
-# 	for root, dirs, files in os.walk(str_path+ "\\" + mod):
-# 		for file in files: 
-
-# 			### Замена строк ###
-# 			list_converter(root+"\\"+file, 0)
-
-# 			new_root = root.replace("\\strings\\", "\\mods\\")
-# 			filename = new_root+"\\" + file.replace(".txt", ".json")
-
-# 			objects = open_file(filename)
-# 			global temp_list
-
-# 			for item in objects:
-# 				for key, value in item.items():
-
-# 					if key == "name":
-# 						if type(value) == list:
-# 							temp_list.append(names)
-# 							item[key] = temp_list.pop(0)
-
-# 						elif type(value) == dict:
-# 							new_dict = item['name']
-# 							for key, value in item['name'].items():
-# 								value = names.pop(0)
-# 								new_dict[key] = value
-
-# 						else:
-# 							item[key] = names.pop(0)
-
-# 					if key == "desc":
-# 						if type(value) == list:
-# 							temp_list.append(desc)
-# 							item[key] = temp_list.pop(0)
-# 						else:
-# 							item[key] = desc.pop(0)
-
-# 					if key == "description":
-# 						item[key] = desc.pop(0)
-
-# 					if key == "job_description":
-# 						item[key] = j_desc.pop(0)
-
-# 					if key == "start_name":
-# 						item[key] = start_name.pop(0)
 
 # 			translated_root = root.replace("\\strings\\","\\translated\\")
 # 			f_filename = translated_root+"\\"+ file.replace(".txt", ".json")
@@ -432,19 +384,6 @@ def dict_writer(file, dic, name):
 # 			j_desc.clear()
 # 			start_name.clear()
 
-def open_file(file):
-	with open (file,'r',encoding = 'utf-8') as t:
-		text = t.read()
-	objects = json.loads(text)
-	return objects
-
-
-# def format_check( e_list, temp_list):
-# 	temp_list.clear()
-# 	temp_list.append(e_list.pop(0))
-
-# 	return temp_list
-
 ### Formating functions ###
 
 def is_str(value):
@@ -474,7 +413,7 @@ def is_list_dict(value):
 
 	return new_string
 
-# extractor(mods_folder, 'Arcana')
-# replacer(mods_folder, string_folder, 'Arcana')
-converter(string_folder, 'Arcana')
-# print(memory_usage())
+# print(select_mod())
+# extractor(mods_folder, mod)
+# replacer(mods_folder, string_folder, mod)
+converter(string_folder)
