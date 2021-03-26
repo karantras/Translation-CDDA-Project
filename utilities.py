@@ -416,4 +416,4 @@ def is_list_dict(value):
 # print(select_mod())
 # extractor(mods_folder, mod)
 # replacer(mods_folder, string_folder, mod)
-converter(string_folder)
+# converter(string_folder)
