@@ -10,3 +10,5 @@ images
 build 
 GUI.spec
 utilities.py
+GUI.py
+cleaner.py

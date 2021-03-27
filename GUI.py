@@ -3,9 +3,10 @@
 
 import tkinter as tk
 import  tkinter.messagebox as mb
-from tkinter.ttk import Button, Style
-import os
+from tkinter.ttk import Button, Style, Label
 import utilities as ut
+
+x = 0
 
 class Translator(tk.Frame):
 	
@@ -26,9 +27,10 @@ class Translator(tk.Frame):
 		btn_settings = Button(self, text='Extract strings',command=self.extractor)
 		btn_settings.place(x=85,y=10)
 
+
 	def centerWindow(self):
-		w = 300
-		h = 300
+		w = 267
+		h = 150
 
 		sw = self.parent.winfo_screenwidth()
 		sh = self.parent.winfo_screenheight()
@@ -40,6 +42,8 @@ class Translator(tk.Frame):
 	def select_mod(self):
 		ut.select_mod()
 
+
+
 	def replacer(self):
 		if ut.mod == "NONE":
 			print("Сначала выберите мод")
@@ -47,7 +51,7 @@ class Translator(tk.Frame):
 			ut.converter( ut.string_folder)
 
 	def extractor(self):
-		if ut.mod == "NONE":
+		if ut.mod == "NONE" or ut.mod == "":
 			print("Сначала выберите мод")
 		else:
 			ut.extractor(ut.mods_folder)
@@ -56,7 +60,12 @@ def main():
 	root = tk.Tk()
 	app = Translator(root)
 	root.iconbitmap('icon.ico')
-	root.mainloop()  
+
+	if ut.configs.get('Folders', 'Translator Folder') == 'NONE':
+		ut.initiation()
+		ut.translator_folder = ut.configs.get('Folders', 'translator folder')
+	root.mainloop()
+
 		
 if __name__ == '__main__':
 	main()
