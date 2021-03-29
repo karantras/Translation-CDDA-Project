@@ -15,6 +15,8 @@ class Translator(tk.Frame):
 		self.parent = parent
 		self.name = 'name'
 		self.parent.title("CDDA Translator")
+		self.text = tk.StringVar()
+		self.text.set("Current mod: "+ut.mod)
 		self.pack(fill=tk.BOTH, expand=1)
 		self.centerWindow()
 
@@ -26,6 +28,9 @@ class Translator(tk.Frame):
 
 		btn_settings = Button(self, text='Extract strings',command=self.extractor)
 		btn_settings.place(x=85,y=10)
+
+		dynlabel = Label(self, textvariable = self.text)
+		dynlabel.place (x = 0, y = 130)
 
 
 	def centerWindow(self):
@@ -41,6 +46,7 @@ class Translator(tk.Frame):
 
 	def select_mod(self):
 		ut.select_mod()
+		self.text.set("Current mod: "+ut.mod)
 
 
 
