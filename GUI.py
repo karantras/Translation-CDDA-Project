@@ -6,8 +6,6 @@ import  tkinter.messagebox as mb
 from tkinter.ttk import Button, Style, Label
 import utilities as ut
 
-x = 0
-
 class Translator(tk.Frame):
 	
 	def __init__(self, parent):
@@ -32,7 +30,6 @@ class Translator(tk.Frame):
 		dynlabel = Label(self, textvariable = self.text)
 		dynlabel.place (x = 0, y = 130)
 
-
 	def centerWindow(self):
 		w = 267
 		h = 150
@@ -47,8 +44,6 @@ class Translator(tk.Frame):
 	def select_mod(self):
 		ut.select_mod()
 		self.text.set("Current mod: "+ut.mod)
-
-
 
 	def replacer(self):
 		if ut.mod == "NONE":
