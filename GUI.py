@@ -10,12 +10,18 @@ from configparser import ConfigParser
 
 configs = ConfigParser()
 configs.read('configs.ini')
-# mod = configs.get('Mods', 'mod')
-# game_folder = configs.get('Folders', 'game folder')
-# mods_folder = configs.get('Folders', 'mod folder')
-# translator_folder = configs.get('Folders', 'translator folder')
-# string_folder = translator_folder+"\\strings\\"+ mod
-# user_folder = translator_folder+"\\user\\"+ mod
+
+game_folder = configs.get('Folders', 'game folder')
+mods_folder = configs.get('Folders', 'mod folder')
+translator_folder = configs.get('Folders', 'translator folder')
+
+
+if translator_folder != os.path.dirname(os.path.abspath(__file__)):
+	trans_path = os.path.dirname(os.path.abspath(__file__))
+	configs['Folders']["translator folder"] = trans_path
+	with open ('configs.ini', 'w') as configfiles:
+		configs.write(configfiles)	
+	translator_folder = configs.get('Folders', 'translator folder')
 
 class Translator(tk.Frame):
 	
@@ -25,14 +31,14 @@ class Translator(tk.Frame):
 		self.name = 'name'
 		self.parent.title("CDDA Translator")
 		self.text = tk.StringVar()
-		self.text.set("Current mod: "+ut.mod)
+		self.text.set("Current mod: "+ configs.get('Mods', 'mod'))
 		self.pack(fill=tk.BOTH, expand=1)
 		self.centerWindow()
 
 		btn_file = Button(self, text="Select mod",command=self.select_mod)
 		btn_file.place(x=5, y=10)	
 
-		btn_replace = Button(self, text='Convert strings',command=self.replacer)
+		btn_replace = Button(self, text='Convert strings',command=self.converter)
 		btn_replace.place(x=173,y=10)
 
 		btn_settings = Button(self, text='Extract strings',command=self.extractor)
@@ -53,36 +59,25 @@ class Translator(tk.Frame):
 		self.parent.geometry('%dx%d+%d+%d' % (w, h, x, y))
 
 	def select_mod(self):
-		ut.select_mod()
-		self.text.set("Current mod: "+ut.mod)
+		ut.select_mod(configs)
+		self.text.set("Current mod: " + configs.get('Mods', 'mod'))
 
-	def replacer(self):
-		if ut.mod == "NONE":
+	def converter(self):
+		if configs.get('Mods', 'mod') == "NONE":
 			print("Сначала выберите мод")
 		else: 
-			ut.converter( ut.string_folder)
+			ut.converter(translator_folder+"\\strings\\"+ configs.get('Mods', 'mod'))
 
 	def extractor(self):
-		if ut.mod == "NONE" or ut.mod == "":
+		if configs.get('Mods', 'mod') == "NONE" or configs.get('Mods', 'mod') == "":
 			print("Сначала выберите мод")
 		else:
-			ut.extractor(ut.mods_folder)
+			ut.extractor(configs.get('Folders', 'mod folder'), configs.get('Mods', 'mod'))
 
 def main():
 	root = tk.Tk()
 	app = Translator(root)
 	root.iconbitmap('icon.ico')
-
-	if ut.configs.get('Folders', 'Translator Folder') == 'NONE':
-		trans_path = os.path.dirname(os.path.abspath(__file__))
-
-		configs['Folders']["translator folder"] = trans_path
-
-		with open ('configs.ini', 'w') as configfiles:
-			configs.write(configfiles)	
-
-		ut.translator_folder = ut.configs.get('Folders', 'translator folder')
-
 	root.mainloop()
 
 		

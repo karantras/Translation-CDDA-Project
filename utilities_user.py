@@ -23,30 +23,29 @@ def open_file(file):
 	return objects
 
 def replacer(user_path, mod_path):
-	print(user_path)
 	for root, dirs, files in os.walk(user_path):
-		for file in files:
-			print(file)
-			base_file = mod_path + "\\" + file.replace(".txt", ".json")
-			user_file = user_path + "\\" + file
+		for file in files:	
+			### Временная функция для того, чтобы не переписывать файлы игры ###
+			base_file = root.replace("user", "mods") + "\\" + file
+			user_file = root + "\\" + file
 
-			user_objects = open_file(user_file)
-			base_objects = open_file(base_file)
+			try:
+				user_objects = open_file(user_file)
+				base_objects = open_file(base_file)
+			except json.decoder.JSONDecodeError:
+				print(f"{file} has some problems")
 
-			if file == "scenarios":
-				for item in base_objects:
-					print(item)
+			# if file == "scenarios":
+			# 	for item in base_objects:
+			# 		print(item)
 			### Исходный json ###
 
-			
-
-
 			### Временная функция для того, чтобы не переписывать файлы игры ###
-			translated_path = root.replace("\\user\\","\\translated\\")
-			f_filename = translated_root + "\\" + file.replace(".txt", ".json")
+			# translated_path = root.replace("\\user\\","\\translated\\")
+			# f_filename = translated_root + "\\" + file.replace(".txt", ".json")
 
-			if not os.path.exists(translated_path):
-				os.makedirs(translated_path)
+			# if not os.path.exists(translated_path):
+			# 	os.makedirs(translated_path)
 			
 			# with open(f_filename, 'w', encoding = 'utf-8') as text:
 
