@@ -5,6 +5,17 @@ import tkinter as tk
 import  tkinter.messagebox as mb
 from tkinter.ttk import Button, Style, Label
 import utilities as ut
+import os
+from configparser import ConfigParser
+
+configs = ConfigParser()
+configs.read('configs.ini')
+# mod = configs.get('Mods', 'mod')
+# game_folder = configs.get('Folders', 'game folder')
+# mods_folder = configs.get('Folders', 'mod folder')
+# translator_folder = configs.get('Folders', 'translator folder')
+# string_folder = translator_folder+"\\strings\\"+ mod
+# user_folder = translator_folder+"\\user\\"+ mod
 
 class Translator(tk.Frame):
 	
@@ -63,8 +74,15 @@ def main():
 	root.iconbitmap('icon.ico')
 
 	if ut.configs.get('Folders', 'Translator Folder') == 'NONE':
-		ut.initiation()
+		trans_path = os.path.dirname(os.path.abspath(__file__))
+
+		configs['Folders']["translator folder"] = trans_path
+
+		with open ('configs.ini', 'w') as configfiles:
+			configs.write(configfiles)	
+
 		ut.translator_folder = ut.configs.get('Folders', 'translator folder')
+
 	root.mainloop()
 
 		
