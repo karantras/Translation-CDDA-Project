@@ -15,6 +15,7 @@ configs.read('configs.ini')
 game_folder = configs.get('Folders', 'game folder')
 mods_folder = configs.get('Folders', 'mod folder')
 translator_folder = configs.get('Folders', 'translator folder')
+user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
 
 if translator_folder != os.path.dirname(os.path.abspath(__file__)):
 	trans_path = os.path.dirname(os.path.abspath(__file__))
@@ -54,11 +55,11 @@ class Translator(tk.Frame):
 		btn_file = Button(self, text="Select mod",command=self.select_mod, width = 14 )
 		btn_file.pack(in_=toolbar, side="left", padx = 3, pady = 1)	
 
-		btn_convert = Button(self, text='Convert strings',command=self.converter, width = 14)
-		btn_convert.pack(in_=toolbar, side="left", padx = 3, pady = 1)	
-
 		btn_settings = Button(self, text='Extract strings',command=self.extractor, width = 14)
 		btn_settings.pack(in_=toolbar, side="left", padx = 3, pady = 1)	
+
+		btn_convert = Button(self, text='Update strings',command=self.converter, width = 14)
+		btn_convert.pack(in_=toolbar, side="left", padx = 3, pady = 1)	
 
 		dynlabel = Label(self, textvariable = self.mod, background="#424242", foreground ="#dddddd", font = "Courier 10 bold")
 		dynlabel.pack(in_= modbar, side = "bottom", fill ="y", anchor=tk.NW)
@@ -82,7 +83,7 @@ class Translator(tk.Frame):
 		if configs.get('Mods', 'mod') == "NONE":
 			print("Сначала выберите мод")
 		else: 
-			ut.converter(translator_folder+"\\strings\\"+ configs.get('Mods', 'mod'))
+			ut.updater(user_folder)
 
 	def extractor(self):
 		if configs.get('Mods', 'mod') == "NONE" or configs.get('Mods', 'mod') == "":
