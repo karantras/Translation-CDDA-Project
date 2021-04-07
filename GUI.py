@@ -89,7 +89,7 @@ class Translator(tk.Frame):
 		if configs.get('Mods', 'mod') == "NONE" or configs.get('Mods', 'mod') == "":
 			print("Сначала выберите мод")
 		else:
-			ut.extractor(configs.get('Folders', 'mod folder'), configs.get('Mods', 'mod'))
+			ut.extractor(configs.get('Folders', 'mod folder'), configs.get('Mods', 'mod'), translator_folder)
 
 class TextRedirector(object):
     def __init__(self, widget, tag="stdout"):
