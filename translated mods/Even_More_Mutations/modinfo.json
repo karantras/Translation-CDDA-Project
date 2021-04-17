@@ -1,0 +1,12 @@
+[
+  {
+    "type" : "MOD_INFO",
+    "id" : "even_more_mutations",
+    "name" : "Even More Mutations",
+    "authors" : ["Uvi"],
+    "maintainers" : ["Uvi"],
+    "description" : "Добавляет три новые ветки мутаций, а также вносит изменения в уже существующие.",
+    "category" : "misc_additions",
+    "dependencies" : ["dda"]
+  }
+]

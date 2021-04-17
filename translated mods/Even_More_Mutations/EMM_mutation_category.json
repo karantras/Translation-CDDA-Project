@@ -1,0 +1,29 @@
+[
+  {
+    "type" : "mutation_category",
+    "id" : "CRAB",
+    "name" : "Краб",
+    "threshold_mut" : "THRESH_CRAB",
+    "mutagen_message" : "Вам внезапно захотелось пройтись боком.",
+    "iv_message" : "Вы неудержимо сжимаете кулаки.",
+    "memorial_message" : "Понимаю крабов."
+  },
+  {
+    "type" : "mutation_category",
+    "id" : "SNAKE",
+    "name" : "Змея",
+    "threshold_mut" : "THRESH_SNAKE",
+    "mutagen_message" : "Вы внезапно зашипели.",
+    "iv_message" : "Вы чувствуете, как ваше тело вытягивается.",
+    "memorial_message" : "Уполз."
+  },
+  {
+    "type" : "mutation_category",
+    "id" : "RABBIT",
+    "name" : "Кролик",
+    "threshold_mut" : "THRESH_RABBIT",
+    "mutagen_message" : "Вам внезапно захотелось поесть морковки.",
+    "iv_message" : "Вы чувствуете, что ваш нос начинает бесконтрольно подергиваться.",
+    "memorial_message" : "Упрыгал."
+  }
+]

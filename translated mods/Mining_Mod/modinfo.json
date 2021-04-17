@@ -1,0 +1,11 @@
+[
+  {
+    "type" : "MOD_INFO",
+    "id" : "Mining_Mod",
+    "name" : "Mining Mod",
+    "authors" : ["DangerNoodle"],
+    "description" : "Добавляет рандомно спавнящиеся минеральные жилы, а также возможность получать полезные ресурсы.",
+    "category" : "misc_additions",
+    "dependencies" : ["dda"]
+  }
+]

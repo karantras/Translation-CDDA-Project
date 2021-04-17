@@ -1,0 +1,17 @@
+[
+  {
+    "type" : "construction_group",
+    "id" : "build_stone_anvil1",
+    "name" : "Построить каменную кузню"
+  },
+  {
+    "type" : "construction_group",
+    "id" : "build_stone_anvil2",
+    "name" : "Построить каменную кузню"
+  },
+  {
+    "type" : "construction_group",
+    "id" : "extract_black_sand",
+    "name" : "Извлечь черный песок"
+  }
+]

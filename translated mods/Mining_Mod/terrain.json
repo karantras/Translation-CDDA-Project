@@ -1,0 +1,254 @@
+[
+  {
+    "type" : "terrain",
+    "id" : "t_rock_coal",
+    "name" : "каменный уголь",
+    "description" : "Залежи угля.",
+    "symbol" : "#",
+    "color" : "dark_gray",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[{"item": "rock", "count": [3, 7]}, {"item": "coal_lump", "charges": [250, 500]}]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_halite",
+    "name" : "галит",
+    "description" : "Залежи соли.",
+    "symbol" : "#",
+    "color" : "white",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[{"item": "rock", "count": [3, 7]}, {"item": "material_rocksalt", "count": [1, 3]}]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_niter",
+    "name" : "селитра",
+    "description" : "Залежи селитры.",
+    "symbol" : "#",
+    "color" : "light_gray",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[
+        {"item": "rock", "count": [3, 7]},
+        {"item": "material_niter", "count": [1, 3], "prob": 80}
+      ]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_brimstone",
+    "name" : "сера",
+    "description" : "Залежи серы.",
+    "symbol" : "#",
+    "color" : "yellow",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[
+        {"item": "rock", "count": [3, 7]},
+        {"item": "chunk_sulfur", "count": [1, 3], "prob": 80}
+      ]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_copper",
+    "name" : "самородная медь",
+    "description" : "Медная жила.",
+    "symbol" : "#",
+    "color" : "light_red",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[
+        {"item": "rock", "count": [3, 7]},
+        {"item": "chunk_copper", "count": [1, 3], "prob": 80}
+      ]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_silver",
+    "name" : "самородное серебро",
+    "description" : "Серебряная жила.",
+    "symbol" : "#",
+    "color" : "white",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[
+        {"item": "rock", "count": [3, 7]},
+        {"item": "chunk_silver", "count": [1, 2], "prob": 80}
+      ]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_gold",
+    "name" : "самородное золото",
+    "description" : "Сверкающая золотая жила.",
+    "symbol" : "#",
+    "color" : "yellow",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[{"item": "rock", "count": [3, 7]}, {"item": "chunk_gold", "count": [1, 2], "prob": 80}]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_aluminum",
+    "name" : "самородный аллюминий",
+    "description" : "Алюминиевая жила",
+    "symbol" : "#",
+    "color" : "light_gray",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[
+        {"item": "rock", "count": [3, 7]},
+        {"item": "chunk_aluminum", "count": [1, 3], "prob": 80}
+      ]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_cassiterite",
+    "name" : "касситерит",
+    "description" : "Залежи касситерита.",
+    "symbol" : "#",
+    "color" : "brown",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[
+        {"item": "rock", "count": [3, 7]},
+        {"item": "chunk_cassiterite", "count": [2, 4], "prob": 80}
+      ]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_galena",
+    "name" : "галенит",
+    "description" : "Залежи галенита.",
+    "symbol" : "#",
+    "color" : "light_gray",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[
+        {"item": "rock", "count": [3, 7]},
+        {"item": "chunk_galena", "count": [2, 4], "prob": 80}
+      ]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_rock_hematite",
+    "name" : "гематит",
+    "description" : "Залежи гематита.",
+    "symbol" : "#",
+    "color" : "brown",
+    "move_cost" : 0,
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "MINEABLE"],
+    "roof" : "t_rock_floor",
+    "bash" : {
+      "str_min":100,
+      "str_max":400,
+      "sound":"crash!",
+      "sound_fail":"whump!",
+      "ter_set":"t_rock_floor",
+      "items":[
+        {"item": "rock", "count": [3, 7]},
+        {"item": "chunk_hematite", "count": [2, 4], "prob": 80}
+      ]
+    }
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_sand_black",
+    "looks_like" : "t_sand",
+    "name" : "черный песок",
+    "description" : "Здесь земля покрыта темный тяжелым песком. Из него можно извлечь множество полезных ресурсов, если знать как.",
+    "symbol" : ".",
+    "color" : "light_gray",
+    "move_cost" : 3,
+    "flags" : ["TRANSPARENT", "DIGGABLE", "FLAT"],
+    "bash" : {
+      "sound":"thump",
+      "ter_set":"t_null",
+      "str_min":50,
+      "str_max":100,
+      "str_min_supported":100,
+      "bash_below":true
+    }
+  }
+]

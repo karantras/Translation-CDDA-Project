@@ -431,18 +431,7 @@ def dict_writer(file, dic, name):
 			file.write(',\n')
 	file.write('\n    }')
 
-# def replacer(path, str_path, mod):
 
-# 			translated_root = root.replace("\\strings\\","\\translated\\")
-# 			f_filename = translated_root+"\\"+ file.replace(".txt", ".json")
-
-# 			if not os.path.exists(translated_root):
-# 				os.makedirs(translated_root)
-			
-# 			### Запись файла ###
-# 			with open (f_filename, 'w', encoding = 'utf-8' ) as text:
-# 				print("[", file =text)
-# 				count_1 = len(objects)
 
 # 				for record in objects:
 # 					print('  {', file = text)
