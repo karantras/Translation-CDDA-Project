@@ -317,15 +317,6 @@
 			}
 		},
 		{
-			"file": "/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_Roo's Accessory Hairstyles_-26-4/Common/Defs/HairDefs/AccessoryHairs_Def.xml",
-			"settings":
-			{
-				"buffer_size": 13739,
-				"encoding": "UTF-8 with BOM",
-				"line_ending": "Windows"
-			}
-		},
-		{
 			"file": "cleaner.py",
 			"settings":
 			{
@@ -344,10 +335,11 @@
 			}
 		},
 		{
-			"file": "GUI.spec",
+			"file": "README.md",
 			"settings":
 			{
-				"buffer_size": 962,
+				"buffer_size": 2043,
+				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
 		}
@@ -404,6 +396,7 @@
 	],
 	"file_history":
 	[
+		"/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_Roo's Accessory Hairstyles_-26-4/Common/Defs/HairDefs/AccessoryHairs_Def.xml",
 		"/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_VGP Garden Fabrics_-8-10/1.1/Defs/ResearchProjectDefs/ResearchProjects_Misc.xml",
 		"/C/Users/User/Documents/Translation-CDDA-Project/GUI.spec",
 		"/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_VGP Garden Fabrics_-8-10/1.1/Defs/ResearchProjectDefs/ResearchTabs_VG.xml",
@@ -530,8 +523,7 @@
 		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Psychiclysm/scenarios.json",
 		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/mutations.json",
 		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/NPC/talk_tags.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/ammo_types.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/bionics.txt"
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/ammo_types.txt"
 	],
 	"find":
 	{
@@ -720,42 +712,14 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 756.8,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 1,
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_Roo's Accessory Hairstyles_-26-4/Common/Defs/HairDefs/AccessoryHairs_Def.xml",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 13739,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								512,
-								517
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/XML/XML.sublime-syntax"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
 					"file": "cleaner.py",
 					"semi_transient": false,
 					"settings":
@@ -779,11 +743,11 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
+					"buffer": 2,
 					"file": ".gitignore",
 					"semi_transient": false,
 					"settings":
@@ -807,37 +771,35 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 2,
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "GUI.spec",
-					"semi_transient": true,
+					"buffer": 3,
+					"file": "README.md",
+					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 962,
+						"buffer_size": 2043,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								328,
-								328
+								2043,
+								2043
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Markdown/Markdown.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 202.4,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
