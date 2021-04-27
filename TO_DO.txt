@@ -1,2 +1,0 @@
-TO_DO
-1) Add "intensity_levels"(names) to replacer

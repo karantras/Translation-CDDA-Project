@@ -15,15 +15,15 @@ messages = []
 attacks = []
 
 
-configs = ConfigParser()
-configs.read('configs.ini')
+# configs = ConfigParser()
+# configs.read('configs.ini')
 
-mod = configs.get('Mods', 'mod')
-game_folder = configs.get('Folders', 'game folder')
-translator_folder = configs.get('Folders', 'translator folder')
-mods_folder = configs.get('Folders', 'mod folder')
-string_folder = translator_folder+"\\strings\\"+ configs.get('Mods', 'mod')
-user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
+# mod = configs.get('Mods', 'mod')
+# game_folder = configs.get('Folders', 'game folder')
+# translator_folder = configs.get('Folders', 'translator folder')
+# mods_folder = configs.get('Folders', 'mod folder')
+# string_folder = translator_folder+"\\strings\\"+ configs.get('Mods', 'mod')
+# user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
 
 ### Replacer's functions ###
 def open_file(file):
@@ -32,7 +32,7 @@ def open_file(file):
 	objects = json.loads(text)
 	return objects
 	
-def replacer(user_path, mod_path):
+def replacer(user_path, mod_path, mod):
 	for root, dirs, files in os.walk(user_path):
 		for file in files:	
 			### Временная функция для того, чтобы не переписывать файлы игры ###
@@ -80,19 +80,19 @@ def replacer(user_path, mod_path):
 					### Replacer part (Will add new tags)### 
 					for objects in base_objects:
 						for key, item in objects.items():
-							if key == "name":
-								minor_rep(objects, item, key, names)
+							try:
+								if key == "name":
+									minor_rep(objects, item, key, names)
 
-							if key == "description": ### Add desc
-								minor_rep(objects, item, key, desc)
-							if key == "desc":
-								minor_rep(objects, item, key, desc)
+								if key == "description":
+									minor_rep(objects, item, key, desc)
+								if key == "desc":
+									minor_rep(objects, item, key, desc)
 
-							if key == "job_description":
-								minor_rep(objects, item, key, j_desc)
-
-							if key == "start_name":
-								minor_rep(objects, item, key, start_name)
+								if key == "job_description":
+									minor_rep(objects, item, key, j_desc)
+							except KeyError:
+								print(f"Errno3 - missing key. Key {item} doesn't exist in user {file}.")
 
 							if key == "sound":
 								minor_rep(objects, item, key, sounds)
@@ -102,20 +102,23 @@ def replacer(user_path, mod_path):
 							   (key == "memorial_message") or
 							   (key == "iv_message")):
 								minor_rep(objects, item, key, messages)
+
 							if key == "spawn_item" and "message" in item:
 								minor_rep(item, item["message"], "message", messages)
+
+							if  key == "use_action" and "msg" in item:
+								minor_rep(item, item["msg"], "msg", messages)
 
 							if key == "attacks":
 								if type(item) == list:
 									item = item[0]
 								if "attack_text_npc" in item.keys():
 									minor_rep(item, item["attack_text_npc"], "attack_text_npc", attacks)
-																	
+														
 					### Write new json part
 					final_folder = root.replace("user","translated")
 					if not os.path.exists(final_folder):
 						os.makedirs(final_folder)
-
 					with open (final_folder + "\\" + file, "w", encoding = "utf-8") as file:
 						print("[", file = file)
 						count = len(base_objects)
@@ -126,7 +129,8 @@ def replacer(user_path, mod_path):
 							for key, value in record.items():
 								m_count -= 1
 								x = 4
-								value = req_value(value, x)
+								value = req_new(value, x)
+								value = final_check(value, x)
 								file.write(x*' '+'"' + key + '" : '+ value)
 								if m_count > 0:
 									file.write(",")
@@ -153,48 +157,93 @@ def minor_rep(objects, item, key, user_objects):
 		objects[key] = user_objects[item]
 
 ### Formating functions ###
-def req_value(value, x):
-    if type(value) == int:
-        value = str(value)
+def clear_sym(string):
+	string = string
+	### Проверка спецсимвола \n ###
+	if "\n" in string:
+		string = string.replace("\n", "\\n")
 
-    elif type(value) == str:
-        value = '"' + value + '"'
-        
-    elif type(value) == bool:
-        value = str(value).lower()
+	#### Проверка на наличие прямой речи  ####
+	if '\"' in string:
+		string = string.replace("\"", '\\"')
+		
+	return string
 
-    elif type(value) == dict:
-        if len(str(value)) >= 100:
-            string = ""
-            count = len(value)
-            x += 2
-            for key, item in value.items():
-                count -= 1
-                value_new = '"' + key + '":' + req_value(item, x)
-                if count > 0:
-                    value_new += ","
-                string += " "*x + value_new + "\n"
-            x -= 2
-            value = '{\n' + string + x*" " +"}"
-        else:
-            value = str(value).replace("'",'"')
+def req_new(value, x, string = "", key = ""):
+	### Конечные случаи ###
+	if type(value) == int or type(value) == float:
+		value = str(value)
+	elif type(value) == bool:
+		value = str(value).lower()
+	elif type(value) == str:
+		value = '"' + clear_sym(value) + '"' #### Проверка на наличие спецсимволов (Необходимо только для строк)
 
-    elif type(value) == list:
-        if len(str(value)) >= 90:
-            string = ""
-            count = len(value)
-            x += 2
-            for item in value:
-                count -= 1
-                value_new = req_value(item, x)
-                if count > 0:
-                    value_new += ","
-                string += " "*x + value_new + "\n"
-            x -= 2
-            value = "[\n" + string + x*" " +"]"
-        else:
-            value = str(value).replace("'",'"')
+	### Комплексные структуры ###
+	elif type(value) == list or type(value) == dict:
+		x += 2
+		count = len(value)
+		### Определение длины структуры
+		if len(str(value)) >= 100:
+			string_type = "long"
+		else: 
+			string_type = "short"
 
-    return value
+		### Распаковка списка ###
+		if type(value) == list:
+			string = ""
+			for item in value:
+				count -= 1			
+				if string_type == "short":
+					value_new = req_new(item, x)
+					if count > 0:
+						value_new += ", "
 
-replacer(user_folder, mods_folder)
+				elif string_type == "long":
+					value_new = x*" " + req_new(item, x)
+					if count > 0:
+						value_new += ',\n'
+					else:
+						value_new += '\n'
+				string += value_new
+			value = '[' + string + ']'
+
+		### Распаковка словаря ###		
+		if type(value) == dict:
+			string = ""
+			for key, item in value.items():
+				count -= 1
+				if string_type == "short":
+					value_new = req_new(item, x)
+					value_new = '"' + key + '" : ' + value_new + "" 
+					if count > 0:
+						value_new += ", "
+
+				elif string_type == "long":
+					value_new = req_new(item, x)
+					value_new = x*" " + '"' + key + '" : ' + value_new 
+					if count > 0:
+						value_new += ',\n'
+					else:
+						value_new += '\n'
+				string += value_new
+			value = "{" + string + "}"
+		x -= 2
+	return value
+
+def final_check(string, x):
+	if '[      ["' in string:
+		string = string.replace('[      ["', '[\n      ["')
+	if '[      "' in string:
+		string = string.replace('[      "', '[\n      "')
+	if '\n]'in string:
+		string = string.replace('\n]', '\n    ]')
+
+	if '{      {"' in string:
+		string = string.replace('{      {"', '{\n      {"')
+	if '{      "' in string:
+		string = string.replace('{      "', '{\n      "')
+	if '\n}'in string:
+		string = string.replace('\n}', '\n    }')
+	return string
+
+# replacer(user_folder, mods_folder)

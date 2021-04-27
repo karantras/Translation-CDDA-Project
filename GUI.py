@@ -8,6 +8,7 @@ import utilities as ut
 import os
 import sys
 from configparser import ConfigParser
+import utilities_user as uut
 
 configs = ConfigParser()
 configs.read('configs.ini')
@@ -17,12 +18,14 @@ mods_folder = configs.get('Folders', 'mod folder')
 translator_folder = configs.get('Folders', 'translator folder')
 user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
 
-if translator_folder != os.path.dirname(os.path.abspath(__file__)):
-	trans_path = os.path.dirname(os.path.abspath(__file__))
-	configs['Folders']["translator folder"] = trans_path
-	with open ('configs.ini', 'w') as configfiles:
-		configs.write(configfiles)	
-	translator_folder = configs.get('Folders', 'translator folder')
+
+def check(configs, translator_folder, __file__):
+	if translator_folder != os.getcwd():
+		trans_path = os.getcwd()
+		configs['Folders']["translator folder"] = trans_path
+		with open ('configs.ini', 'w') as configfiles:
+			configs.write(configfiles)	
+		translator_folder = configs.get('Folders', 'translator folder')
 
 class Translator(tk.Frame):
 	def __init__(self, parent):
@@ -61,11 +64,14 @@ class Translator(tk.Frame):
 		btn_convert = Button(self, text='Update strings',command=self.converter, width = 14)
 		btn_convert.pack(in_=toolbar, side="left", padx = 3, pady = 1)	
 
+		btn_convert = Button(self, text='Rewrite json',command=self.rewrite, width = 14)
+		btn_convert.pack(in_=toolbar, side="left", padx = 3, pady = 1)	
+
 		dynlabel = Label(self, textvariable = self.mod, background="#424242", foreground ="#dddddd", font = "Courier 10 bold")
 		dynlabel.pack(in_= modbar, side = "bottom", fill ="y", anchor=tk.NW)
 
 	def centerWindow(self):
-		w = 320
+		w = 500
 		h = 150
 
 		sw = self.parent.winfo_screenwidth()
@@ -91,6 +97,12 @@ class Translator(tk.Frame):
 		else:
 			ut.extractor(configs.get('Folders', 'mod folder'), configs.get('Mods', 'mod'), translator_folder)
 
+	def rewrite(self):
+		if configs.get('Mods', 'mod') == "NONE":
+			print("Сначала выберите мод")
+		else: 
+			uut.replacer(translator_folder+"\\user\\"+ configs.get('Mods', 'mod'), configs.get('Folders', 'mod folder'),configs.get('Mods', 'mod'))
+
 class TextRedirector(object):
     def __init__(self, widget, tag="stdout"):
         self.widget = widget
@@ -105,6 +117,7 @@ class TextRedirector(object):
 def main():
 	root = tk.Tk()
 	app = Translator(root)
+	check(configs, translator_folder, __file__)
 	root.iconbitmap('icon.ico')
 	root.mainloop()
 

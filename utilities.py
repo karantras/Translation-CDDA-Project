@@ -7,15 +7,15 @@ from configparser import ConfigParser
 import tkinter.filedialog as fd
 
 
-configs = ConfigParser()
-configs.read('configs.ini')
+# configs = ConfigParser()
+# configs.read('configs.ini')
 
-mod = configs.get('Mods', 'mod')
-game_folder = configs.get('Folders', 'game folder')
-translator_folder = configs.get('Folders', 'translator folder')
-mods_folder = configs.get('Folders', 'mod folder')
-string_folder = translator_folder+"\\strings\\"+ configs.get('Mods', 'mod')
-user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
+# mod = configs.get('Mods', 'mod')
+# game_folder = configs.get('Folders', 'game folder')
+# translator_folder = configs.get('Folders', 'translator folder')
+# mods_folder = configs.get('Folders', 'mod folder')
+# string_folder = translator_folder+"\\strings\\"+ configs.get('Mods', 'mod')
+# user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
 
 ignorable = {
     "ascii_art",
@@ -70,6 +70,7 @@ j_desc = []
 start_name = []
 sounds = []
 messages = []
+message_key = ["not_ready_msg", "msg", "need_charges_msg", "need_fire_msg", "sound_msg", "no_deactivate_msg","menu_text"]
 attacks = []
 buffes = []
 buffes_key = ["static_buffs", "onmove_buffs", "onmiss_buffs", "onattack_buffs", "onblock_buffs", "ondodge_buffs", "onpause_buffs"]
@@ -161,8 +162,8 @@ def get_items_tags(item, tags, key_tags, check):
 			sounds.append(bash["sound"])
 		if "sound_fail" in bash:
 			sounds.append(bash["sound_fail"])
+
 	if "sound" in tags:
-		# if "\""
 		sounds.append(item["sound"])
 		check = True
 
@@ -178,6 +179,24 @@ def get_items_tags(item, tags, key_tags, check):
 	if "memorial_message" in tags:
 		get_item(item, messages,"memorial_message")
 		check = True
+		
+	if "use_action" in tags and "not_ready_msg" in item["use_action"]:
+		get_item(item["use_action"], messages,"not_ready_msg")
+
+	if "use_action" in tags and "msg" in item["use_action"]:
+		get_item(item["use_action"], messages,"msg")
+
+	if "use_action" in tags and "need_charges_msg" in item["use_action"]:
+		get_item(item["use_action"], messages,"need_charges_msg")
+
+	if "use_action" in tags and "need_fire_msg" in item["use_action"]:
+		get_item(item["use_action"], messages,"need_fire_msg")
+
+	if "miss_messages" in tags:
+		for i in item["miss_messages"]:
+			for x in i:
+				if type(x) == str:
+					messages.append(x)
 
 	if "spawn_item" in tags and "message" in item["spawn_item"]:
 		message = item["spawn_item"]
@@ -202,6 +221,7 @@ def get_items_tags(item, tags, key_tags, check):
 			if "description" in buff:
 				get_item(buff, buffes, "description")
 			check = True
+
 	return check
 
 def unpack_list(my_list):
@@ -241,7 +261,7 @@ def extractor (path, mod, translator_folder):
 						print(f"{file.title()}'s strings have already extracted")
 						existed_files += 1
 					else:
-					# if file == "сconstruction":
+					# if file == "effect":
 
 						if _file.endswith(".json"):
 							objects = open_file(root + "\\" + _file)
@@ -266,7 +286,6 @@ def extractor (path, mod, translator_folder):
 							messages = cleaning(messages)
 							attacks = cleaning(attacks)
 							buffes = cleaning(buffes)
-					
 							if check:
 								if not os.path.exists(user_root):
 									os.makedirs(user_root)
@@ -408,7 +427,7 @@ def list_converter (file, index):
 			if x == "[Descriptions]":
 				index = list_writer(desc, strings, index)
 
-			if x == "[Job descriptions]":
+			if x == "[Job_Description]":
 				index = list_writer(j_desc, strings, index)
 
 			if x == "[Start Name]":
@@ -562,6 +581,7 @@ def check_for_new_tags(tags, item, record):
 		if "sound" in bash or "sound_fail" in bash:
 			record["sound"] = {}
 	### Messages ###
+
 	if ((("messages" in tags) or
 		("iv_message" in tags) or
 		("memorial_messages" in tags) or	
@@ -572,6 +592,11 @@ def check_for_new_tags(tags, item, record):
 	if "spawn_item" in tags and "message" in item["spawn_item"] and "messages" not in record.keys():
 		record["messages"] = {}		
 
+	if (("use_action" in tags) and 
+		(("not_ready_msg" in item["use_action"] or "msg" in item["use_action"]) or
+		("need_charges_msg" in item["use_action"] or "need_fire_msg" in item["use_action"])) and 
+		("messages" not in record.keys())):
+		record["messages"] = {}
 	### Attacks ###
 	if "attacks" in tags and "attacks" not in record.keys():
 		if "attack_text_npc" or "attack_text_u" in item["attacks"]:
@@ -588,4 +613,4 @@ def check_for_updates(key, old_dict, new_list):
 
 # select_mod(configs)
 # extractor(configs.get('Folders', 'mod folder'), configs.get('Mods', 'mod'), translator_folder)
-updater(user_folder, True)
+# updater(user_folder, True)

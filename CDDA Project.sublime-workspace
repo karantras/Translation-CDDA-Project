@@ -4,8 +4,128 @@
 		"selected_items":
 		[
 			[
+				"__",
+				"__file__"
+			],
+			[
+				"me",
+				"message_key"
+			],
+			[
+				"use",
+				"use_action"
+			],
+			[
+				"nee",
+				"need_fire_msg"
+			],
+			[
+				"str",
+				"string"
+			],
+			[
+				"st",
+				"strings"
+			],
+			[
+				"ex",
+				"except"
+			],
+			[
+				"fi",
+				"final_check"
+			],
+			[
+				"string",
+				"string"
+			],
+			[
+				"s",
+				"strings"
+			],
+			[
+				"lo",
+				"long_value"
+			],
+			[
+				"long",
+				"long_value"
+			],
+			[
+				"lon",
+				"long_value_new"
+			],
+			[
+				"req",
+				"req_new"
+			],
+			[
+				"req_",
+				"req_new"
+			],
+			[
+				"obj",
+				"obj"
+			],
+			[
+				"val",
+				"value_new"
+			],
+			[
+				"va",
+				"value_new"
+			],
+			[
+				"mess",
+				"messages"
+			],
+			[
+				"clear",
+				"clear_sym"
+			],
+			[
+				"cle",
+				"clear_sym"
+			],
+			[
+				"messa",
+				"messages"
+			],
+			[
+				"new",
+				"value_new"
+			],
+			[
+				"file",
+				"file_root"
+			],
+			[
+				"fil",
+				"file_root"
+			],
+			[
+				"mes",
+				"messages"
+			],
+			[
 				"user",
-				"user_root"
+				"user_objects"
+			],
+			[
+				"re",
+				"replicas"
+			],
+			[
+				"rep",
+				"replicas"
+			],
+			[
+				"di",
+				"dict_repl"
+			],
+			[
+				"che",
+				"check"
 			],
 			[
 				"ch",
@@ -16,16 +136,8 @@
 				"check_symbol"
 			],
 			[
-				"di",
-				"dict_buff"
-			],
-			[
 				"dic",
 				"dict_writer"
-			],
-			[
-				"use",
-				"user"
 			],
 			[
 				"check",
@@ -56,18 +168,6 @@
 				"value_new"
 			],
 			[
-				"val",
-				"value_new"
-			],
-			[
-				"req",
-				"req_value"
-			],
-			[
-				"str",
-				"string"
-			],
-			[
 				"atta",
 				"attacks"
 			],
@@ -84,32 +184,12 @@
 				"check"
 			],
 			[
-				"che",
-				"check"
-			],
-			[
-				"messa",
-				"message"
-			],
-			[
-				"me",
-				"message"
-			],
-			[
-				"s",
-				"single_tags"
-			],
-			[
 				"tag",
 				"tag_check"
 			],
 			[
 				"start",
 				"start_name"
-			],
-			[
-				"new",
-				"new_string"
 			],
 			[
 				"des",
@@ -136,10 +216,6 @@
 				"merge_file"
 			],
 			[
-				"ex",
-				"expected_s"
-			],
-			[
 				"bas",
 				"base_objects"
 			],
@@ -164,20 +240,12 @@
 				"dict_start"
 			],
 			[
-				"cle",
-				"cleaning"
-			],
-			[
 				"new_",
 				"new_tags"
 			],
 			[
 				"desc",
 				"descriptions"
-			],
-			[
-				"string",
-				"string_file"
 			],
 			[
 				"ke",
@@ -190,10 +258,6 @@
 			[
 				"ob",
 				"objects"
-			],
-			[
-				"clear",
-				"clear_list"
 			],
 			[
 				"jon",
@@ -244,12 +308,29 @@
 	"buffers":
 	[
 		{
-			"file": "/C/Users/User/Downloads/CDDA/Sourse/Cataclysm-DDA-master/lang/po/ru.po",
+			"file": "GUI.py",
 			"settings":
 			{
-				"buffer_size": 11195524,
+				"buffer_size": 4013,
 				"encoding": "UTF-8",
-				"line_ending": "Unix"
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_Roo's Accessory Hairstyles_-26-4/Common/Defs/HairDefs/AccessoryHairs_Def.xml",
+			"settings":
+			{
+				"buffer_size": 13739,
+				"encoding": "UTF-8 with BOM",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "GUI.spec",
+			"settings":
+			{
+				"buffer_size": 962,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -301,145 +382,138 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/User/Documents/Translation-CDDA-Project",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/NPC",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Furniture-Terrain",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm"
+		"/C/Users/User/Documents/Translation-CDDA-Project"
 	],
 	"file_history":
 	[
+		"/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_VGP Garden Fabrics_-8-10/1.1/Defs/ResearchProjectDefs/ResearchProjects_Misc.xml",
+		"/C/Users/User/Documents/Translation-CDDA-Project/GUI.spec",
+		"/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_VGP Garden Fabrics_-8-10/1.1/Defs/ResearchProjectDefs/ResearchTabs_VG.xml",
+		"/C/Users/User/Downloads/CDDA/CDDA_jackal/GUI.py",
+		"/C/Users/User/Documents/Translation-CDDA-Project/utilities.py",
+		"/C/Users/User/Documents/Translation-CDDA-Project/GUI.py",
+		"/C/Users/User/Downloads/CDDA/CDDA_jackal/GUI.spec",
+		"/C/Users/User/Documents/Translation-CDDA-Project/.gitignore",
+		"/C/Users/User/Documents/Translation-CDDA-Project/utilities_user.py",
+		"/C/Users/User/Downloads/CDDA/CDDA_jackal/README.txt.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/encoding.py",
+		"/C/Users/User/Documents/Translation-CDDA-Project/list.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/My list",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/ZSFixed_CDDAXP/CDDAXP_Tools.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/ZSFixed_CDDAXP/CDDAXP_Tool_Armor.json",
+		"/D/CDDA/data/mods/AdvancedGear_CDDA_Mod/nanotech look notes.txt",
+		"/D/CDDA/data/mods/AdvancedGear_CDDA_Mod/README.md",
+		"/D/CDDA/data/mods/AdvancedGear_CDDA_Mod/modinfo.json",
+		"/D/CDDA/data/mods/Whaley_Hair_And_Tattoo/Whaley_Hair_And_Tattoo/modinfo.json",
 		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/effects.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/mutations.json",
+		"/C/Users/User/AppData/Local/Temp/Temp1_Armor_Up_Survivor_Expansion-20210425T110406Z-001.zip/Armor_Up_Survivor_Expansion/modinfo.json",
+		"/C/Users/User/AppData/Local/Temp/Temp1_Armor_Up_Survivor_Expansion-20210425T110406Z-001.zip/Armor_Up_Survivor_Expansion/mod_tileset.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/starting_traits.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/mutations_override.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/[Modlist Alpha]",
+		"/D/CDDA/data/mods/SD_Magcrafting/modinfo.json",
+		"/D/CDDA/data/mods/makeshift/modinfo.json",
+		"/D/CDDA/data/mods/Uekibati_mod/modinfo.json",
+		"/D/CDDA/data/mods/makeshift/item.json",
+		"/D/CDDA/data/mods/Miscellaneous_Magiclysm_Expansions/seed.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/More_tea_leaf/tl_drink.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_tea_leaf/tl_seed.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_tea_leaf/tl_drink.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_tea_leaf/tl_tea_leaf.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_tea_leaf/tl_materials.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_tea_leaf/modinfo.txt",
+		"/D/CDDA/data/mods/Growable_pots/modinfo.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Growable_pots/modinfo.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Growable_pots/items.json",
+		"/C/Users/User/Downloads/CDDA/Sourse/Cataclysm-DDA-master/lang/po/ru.po",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Growable_pots/items.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Growable_pots/modinfo.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Hydroponics/furniture.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Hydroponics/construction_group.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Hydroponics/terrain.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/skills.txt",
+		"/D/CDDA/data/mods/Growable_pots/mod_tileset.json",
+		"/D/CDDA/data/mods/Growable_pots/items.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Psychiclysm/effects.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/effects.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/README.md",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/fake_items.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/utilities_usersas.py",
+		"/C/Users/User/Documents/Translation-CDDA-Project/back_ups/Psychiclysm/effects.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/0_spells.txt",
+		"/D/CDDA/data/mods/Psychiclysm/skills.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/back_ups/Psychiclysm/items.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/back_ups/Psychiclysm/scenarios.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Hydroponics/modinfo.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/effect.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/effects.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/back_ups/Mutant_Animals/monsters.txt",
+		"/D/CDDA/data/mods/Psychiclysm/mutations_override.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/back_ups/Mutant_Animals/mutant_ungulates.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/back_ups/Mutant_Animals/speech.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/back_ups/Mutant_Animals/mutant_reptiles.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/back_ups/Mutant_Animals/mutant_canines.txt",
+		"/D/CDDA/data/mods/More_tea_leaf/modinfo.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Psychiclysm/0_spells.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/DracoPigMod/pig_monsters.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/DracoPigMod/pig_monsters.json",
+		"/D/CDDA/data/mods/DracoDogMod/dog_monsters.json",
+		"/D/CDDA/data/mods/DracoDogMod/modinfo.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/DracoPigMod/modinfo.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/DracoPigMod/pig_monsters.txt",
+		"/D/CDDA/data/mods/Mining_Mod/modinfo.json",
+		"/D/CDDA/data/mods/Mining_Mod/mapgen_deep.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Psychiclysm/effect.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/effect.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/effect.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/test.py",
+		"/D/CDDA/data/mods/Psychiclysm/mutations.json",
+		"/D/CDDA/data/mods/Psychiclysm/NPC/talk_tags.json",
+		"/D/CDDA/README.md",
+		"/C/Users/User/AppData/Local/Temp/Temp1_Cataclysm-DDA-master.zip/Cataclysm-DDA-master/tools/json_tools/splitter.py",
 		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/mutations.txt",
 		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/mutations_override.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/mutations_override.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/modinfo.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Furniture-Terrain/furniture.txt",
-		"/D/CDDA/data/mods/Whaley_Hair_And_Tattoo/mod_tileset.json",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/Mutant_NPCs/npc_classes_mutant.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/skills.txt",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/Mutant_NPCs/modinfo.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/scenarios.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/professions.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/utilities.py",
-		"/C/Users/User/Downloads/CDDA/UndeadPeopleTileset-master/TILESET_MODS/Mods/UnDeadPeople_mod_tileset_BL9/mod_tileset.json",
-		"/C/Users/User/Downloads/CDDA/UndeadPeopleTileset-master/TILESET_MODS/Mods/UnDeadPeople_mod_tileset_BL9/modinfo.json",
-		"/C/Users/User/Downloads/CDDA/UndeadPeopleTileset-master/TILESET_MODS/Mods/UnDeadPeople_mod_tileset_Mining_Mod/mod_tileset.json",
-		"/C/Users/User/Downloads/CDDA/UndeadPeopleTileset-master/TILESET_MODS/Mods/UnDeadPeople_mod_tileset_Cataclysm++/mod_tileset.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Mining_Mod_BN/construction.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/user/Mining_Mod_BN/construction.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/configs.ini",
-		"/C/Users/User/Documents/Translation-CDDA-Project/GUI.py",
-		"/C/Users/User/Documents/Translation-CDDA-Project/user/Mining_Mod/overmap_terrain.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/README.md",
-		"/C/Users/User/Downloads/CDDA/Sourse/Cataclysm-DDA-master/lang/po/ru.po",
-		"/C/Users/User/Downloads/CDDA/CDDA_jackal/README.txt.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Monsters/BL9monsters/wild_flora_fauna.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Monsters/BL9monsters/Infantry.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Items/ammo_types.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Items/ammo.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Items/armor.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Furniture-Terrain/fields.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/items.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/martialarts.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/More_Survivor_Stuff/martialarts.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/user/More_Survivor_Stuff/martialarts.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/BL9-100%_monster_resilience_version/Furniture-Terrain/harvest.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/More_Survivor_Stuff/techniques.json",
-		"/C/Users/User/Downloads/Abrahms_MartialArts/battoujutsu.json",
-		"/C/Users/User/Downloads/CDDA/Sourse/Cataclysm-DDA-master/lang/notes/ru.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/TO_DO.txt",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/Wild_Living/modinfo.json",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/CerealMod/modinfo.json",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/SD_Magcrafting/modinfo.json",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/Skin_Hair_Cosmetics/modinfo.json",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/GunCotton/items.json",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/nocts_cata_mod_DDA/modinfo.json",
 		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/classes.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Arcana/chargen/professions.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Arcana/items/ammo.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/effects.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/utilities_user.py",
-		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/Psychiclysm/modinfo.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Mining_Mod/items.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/user/Even_More_Mutations/EMM_dreams.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Even_More_Mutations/EMM_dreams.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Even_More_Mutations/EMM_dreams.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Even_More_Mutations/EMM_mutations.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Even_More_Mutations/EMM_mutation_category.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Even_More_Mutations/EMM_mutation_category.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Even_More_Mutations/EMM_mutagen.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Even_More_Mutations/EMM_mutagen.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/reqtest.py",
-		"/C/Users/User/Documents/Translation-CDDA-Project/test_req.py",
-		"/C/Users/User/Documents/Translation-CDDA-Project/test.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Even_More_Mutations/EMM_mutations.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Even_More_Mutations/EMM_mutations.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/user/Even_More_Mutations/EMM_mutations.json",
-		"/C/Users/User/Downloads/drive-download-20210414T100551Z-001/EMM_mutations.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Mining_Mod/furniture.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Mining_Mod/items.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Mining_Mod/terrain.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Even_More_Mutations/modinfo.txt",
-		"/C/Users/User/Downloads/drive-download-20210414T100551Z-001/EMM_mutation_category.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/user/Even_More_Mutations/EMM_mutation_category.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Even_More_Mutations/EMM_mutation_category.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/user/Even_More_Mutations/EMM_mutagen.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/expiremental/utilities_test.py",
-		"/C/Users/User/Downloads/drive-download-20210414T100551Z-001/EMM_mutagen.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Even_More_Mutations/EMM_mutagen.txt",
-		"/C/Users/User/Downloads/drive-download-20210414T100551Z-001/EMM_dreams.txt",
-		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Mining_Mod/furniture.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Mining_Mod/construction.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Mining_Mod/construction.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Mining_Mod/furniture.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Mining_Mod/construction_group.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Even_More_Mutations/modinfo.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Even_More_Mutations/EMM_dreams.json",
-		"/C/Users/User/Documents/Translation-CDDA-Project/utilities_backup.py",
-		"/C/Users/User/Documents/Translation-CDDA-Project/po_utilities.py",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/po/Mining_Mod/ru.po",
-		"/C/Users/User/Documents/Translation-CDDA-Project/po/test4.po",
-		"/C/Users/User/Documents/Translation-CDDA-Project/po/test2.po",
-		"/C/Users/User/Documents/Translation-CDDA-Project/po/test.po",
-		"/C/Users/User/Documents/Translation-CDDA-Project/po/test3.po",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/utilities.py",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/po_utilities.py",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/utilities_user.py",
-		"/C/Users/User/Downloads/Tankmod_Revived_BN/speech.json",
-		"/C/Users/User/Downloads/Tankmod_Revived_BN/vehicles.json",
-		"/C/Users/User/Downloads/Tankmod_Revived_BN/items.json",
-		"/C/Users/User/Downloads/Tankmod_Revived_BN/ammo_effects.json",
-		"/C/Users/User/Downloads/Tankmod_Revived_BN/item_groups.json",
-		"/C/Users/User/Downloads/Tankmod_Revived_BN/ammo_types.json",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/GUI.py",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/utilities_test.py",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/configs.ini",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/test.json",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/mods/Mining_Mod/items.txt",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/test.py",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/strings/BL9-100%_monster_resilience_version/Furniture-Terrain/terrain.txt",
-		"/C/Users/User/Downloads/Translation-CDDA-Project-main/configs.ini",
-		"/C/Users/User/Downloads/index.pot",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/cleaner.py",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/README.md",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/strings/BL9-100%_monster_resilience_version/Items/comestibles.txt",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/strings/BL9-100%_monster_resilience_version/Overmap/overmap_terrain.txt",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/test.py",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/user/BL9-100%_monster_resilience_version/modinfo.json",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/user/BL9-100%_monster_resilience_version/Items/ammo_types.json",
-		"/D/Games/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_[SYR] Harpy_-6-4/1.2/Defs/Race_Harpy.xml",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/user/Mining_Mod/modinfo.json",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/user/Mining_Mod/terrain.json",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/strings/Mining_Mod/terrain.txt",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/strings/Mining_Mod/furniture.txt",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/mods/Arcana/chargen/scenarios.json",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/user/Arcana/chargen/start_locations.json",
-		"/C/Users/User/Downloads/CDDA/Translator/Translation-CDDA-Project/expiremental/strings/Arcana/chargen/professions.txt"
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/mutations.json",
+		"/C/Users/User/Documents/Pyrhon test/test",
+		"/C/Users/User/Documents/Pyrhon test/test2.py",
+		"/C/Users/User/Documents/Pyrhon test/data_file.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/utilities — копия.py",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Mutant_Animals/speech.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Test/speech_grabber.json",
+		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/PKs_Rebalancing/speech/speech_grabber.json",
+		"/C/Users/User/Downloads/CDDA/CDDA-Kenan-Modpack-master/CDDA-Kenan-Modpack-master/Kenan-Modpack/Arcana/npcs/COMMON_TALK.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Mutant_Animals/speech.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Mutant_Animals/speech.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/tetdsdclj.py",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/classes.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/items/armor.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/techniques.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/More_Survivor_Stuff/techniques.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/More_Survivor_Stuff/items/items.json",
+		"/C/Users/User/AppData/Local/Temp/Temp1_More_Survivor_Stuff-20210420T080412Z-001.zip/More_Survivor_Stuff/techniques.txt",
+		"/C/Users/User/AppData/Local/Temp/Temp1_More_Survivor_Stuff-20210420T080412Z-001.zip/More_Survivor_Stuff/items/armor.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/More_Survivor_Stuff/overmap/overmap_terrain_artisan.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/monsters/speech.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/monsters/monsters.txt",
+		"/C/Users/User/AppData/Local/Temp/Temp1_More_Survivor_Stuff-20210420T080412Z-001.zip/More_Survivor_Stuff/items/books.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/modinfo.txt",
+		"/C/Users/User/AppData/Local/Temp/Temp1_More_Survivor_Stuff-20210420T080412Z-001.zip/More_Survivor_Stuff/modinfo.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/martialarts.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/tool_qualities.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/More_Survivor_Stuff/overmap/overmap_terrain_artisan.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/NPC/talk_tags.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/NPC/talk_tags.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/scenarios.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/scenarios.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Psychiclysm/professions.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/0_spells.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Psychiclysm/skills.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/translated/Psychiclysm/scenarios.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/user/Psychiclysm/mutations.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/mods/Psychiclysm/NPC/talk_tags.json",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/ammo_types.txt",
+		"/C/Users/User/Documents/Translation-CDDA-Project/strings/Psychiclysm/bionics.txt"
 	],
 	"find":
 	{
@@ -454,9 +528,102 @@
 	},
 	"find_state":
 	{
-		"case_sensitive": false,
+		"case_sensitive": true,
 		"find_history":
 		[
+			"Bolte",
+			"Au",
+			"autu",
+			"eye",
+			"user",
+			"\"no_deactivate_msg\"",
+			"need",
+			"need_charges_msg",
+			"use_ac",
+			"Fruity and delicious",
+			"урожай",
+			"выросло",
+			"carrot",
+			"growing yet.",
+			"It isn't done growing yet.",
+			"broccoli",
+			"ripe broccoli",
+			"growing",
+			"garden pot",
+			"garden pots",
+			"skittish piglet",
+			"piglet",
+			"pig ",
+			"pig",
+			"зшп",
+			"\\\"",
+			"jso",
+			"It",
+			"clear",
+			"grop",
+			"\"\"",
+			"Job_Description",
+			"психоз",
+			"apocaly",
+			"print",
+			"\\",
+			"Some",
+			"\\",
+			"It",
+			"\"\\\\",
+			"\"Run Away.",
+			"run",
+			"ГАВНо",
+			"print",
+			"run",
+			" ",
+			"\\",
+			"print(",
+			"професс",
+			"\"You'll never defeat me.  [2/3]\"",
+			"print(",
+			"\t\t\t\t\t",
+			"\t",
+			"item spell",
+			"stare",
+			"аlaming eye stare",
+			"Flaming eye stare",
+			"monster spell",
+			"I wander the hidden pathways of the cosmos.",
+			"\"morale\": 0",
+			"\"melee_dice_sides\": 3",
+			"    \"morale\": 0,\n    \"melee_skill\": 5,\n    \"melee_dice_sides\":",
+			"\"melee_dice_sides\":",
+			"34",
+			"Mental Meltdown",
+			"Traumatized",
+			"horror",
+			"b_dried_apple",
+			"look",
+			"\\\"",
+			"You bravely attempt to resist the fear",
+			"Dodge skill",
+			"Grab Break",
+			"Wallbash",
+			"wall",
+			"grab",
+			"false",
+			"true",
+			"rue",
+			"True",
+			"print",
+			"\\\\",
+			"Follow me.",
+			"Follow me.  I'll show you the way",
+			"Help a guy out, would ya",
+			"Let's team",
+			"Let's team up",
+			"We've always been friends",
+			"Don't leave me ",
+			"Don't leave me behind",
+			"Мне нужна помощь",
+			"I could use some help over here",
+			"look",
 			"железная воля",
 			"TEST_PSYCHIC",
 			"WILL",
@@ -491,92 +658,7 @@
 			" lava ",
 			"Pool of",
 			"Schizophrenic",
-			"производство",
-			"выживание ",
-			"выживание",
-			"\\n",
-			"magiclysm",
-			"\\",
-			"/",
-			"clear_",
-			"clear",
-			"слиток",
-			"камень",
-			"это ",
-			"это",
-			"key_tags",
-			"names",
-			" pcname",
-			"pcname",
-			"player_namr",
-			"player_",
-			"player ",
-			"player",
-			"сердит",
-			"%s",
-			"бьете",
-			"Вы уда",
-			"%s",
-			"зелье",
-			"магик",
-			"\\",
-			"os",
-			"\\",
-			"name",
-			"mods_fol",
-			"mod_fol",
-			"age",
-			" age ",
-			"age",
-			"mods_",
-			"\\",
-			"mod fol",
-			"mod",
-			"crash!",
-			"RB_MeadFermentingBarrel",
-			"bees",
-			"with open ",
-			"with open (user_string",
-			"names",
-			"\"names\"",
-			"names",
-			"Sound]",
-			"Sound",
-			"Sounds",
-			"def ",
-			"def  ",
-			"def ",
-			"user.write",
-			"smash",
-			"job",
-			"[Job descriptions]",
-			"[Job description]",
-			"names",
-			"mod",
-			"initi",
-			"ut",
-			"mod",
-			"print",
-			"mod",
-			"obj",
-			"\"sound\"",
-			"sound",
-			"categ",
-			"\"[Start Names]",
-			"crash!",
-			"lam",
-			"lig",
-			"lamp",
-			"light",
-			"lamp",
-			"lanp",
-			"lan",
-			"ligh",
-			"thread",
-			"handler",
-			"raw",
-			"band",
-			"os"
+			"производство"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -594,35 +676,94 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/C/Users/User/Downloads/CDDA/Sourse/Cataclysm-DDA-master/lang/po/ru.po",
+					"file": "GUI.py",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11195524,
+						"buffer_size": 4013,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6870484,
-								6870493
+								672,
+								672
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Text/Plain text.tmLanguage"
+							"syntax": "Packages/Python/Python.sublime-syntax",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3571028.8,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/Steam/steamapps/common/RimWorld/Mods/__LocalCopy_Roo's Accessory Hairstyles_-26-4/Common/Defs/HairDefs/AccessoryHairs_Def.xml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 13739,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								512,
+								517
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/XML/XML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "GUI.spec",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 962,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								328,
+								328
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
 					"type": "text"
 				}
 			]
@@ -661,7 +802,7 @@
 	"menu_visible": true,
 	"output.exec":
 	{
-		"height": 96.0
+		"height": 168.0
 	},
 	"output.find_results":
 	{
@@ -709,7 +850,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 289.0,
+	"side_bar_width": 330.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
