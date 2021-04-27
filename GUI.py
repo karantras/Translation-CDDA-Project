@@ -16,8 +16,6 @@ configs.read('configs.ini')
 game_folder = configs.get('Folders', 'game folder')
 mods_folder = configs.get('Folders', 'mod folder')
 translator_folder = configs.get('Folders', 'translator folder')
-user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
-
 
 def check(configs, translator_folder, __file__):
 	if translator_folder != os.getcwd():
@@ -89,13 +87,13 @@ class Translator(tk.Frame):
 		if configs.get('Mods', 'mod') == "NONE":
 			print("Сначала выберите мод")
 		else: 
-			ut.updater(user_folder)
+			ut.updater(translator_folder+"\\user\\"+ configs.get('Mods', 'mod'))
 
 	def extractor(self):
 		if configs.get('Mods', 'mod') == "NONE" or configs.get('Mods', 'mod') == "":
 			print("Сначала выберите мод")
 		else:
-			ut.extractor(configs.get('Folders', 'mod folder'), configs.get('Mods', 'mod'), translator_folder)
+			ut.extractor(configs.get('Folders', 'mod folder'), configs.get('Mods', 'mod'), configs.get('Folders', 'translator folder'))
 
 	def rewrite(self):
 		if configs.get('Mods', 'mod') == "NONE":

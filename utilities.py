@@ -286,6 +286,7 @@ def extractor (path, mod, translator_folder):
 							messages = cleaning(messages)
 							attacks = cleaning(attacks)
 							buffes = cleaning(buffes)
+							
 							if check:
 								if not os.path.exists(user_root):
 									os.makedirs(user_root)
@@ -408,10 +409,10 @@ def strings_writer(string_path, user_string, file, update):
 						string.write(item + "\n")
 					string.write("\n")
 
-		if update == False:
-			print(f"Strings from {file}.json successfully extracted")
-		else:
-			print(f"Strings from {file}.json successfully updated")
+		# if update == False:
+		# 	print(f"Strings from {file}.json successfully extracted")
+		# else:
+		# 	print(f"Strings from {file}.json successfully updated")
 
 ####### Convertor's functions ######
 
