@@ -7,15 +7,15 @@ from configparser import ConfigParser
 import tkinter.filedialog as fd
 
 
-# configs = ConfigParser()
-# configs.read('configs.ini')
+configs = ConfigParser()
+configs.read('configs.ini')
 
-# mod = configs.get('Mods', 'mod')
-# game_folder = configs.get('Folders', 'game folder')
-# translator_folder = configs.get('Folders', 'translator folder')
-# mods_folder = configs.get('Folders', 'mod folder')
-# string_folder = translator_folder+"\\strings\\"+ configs.get('Mods', 'mod')
-# user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
+mod = configs.get('Mods', 'mod')
+game_folder = configs.get('Folders', 'game folder')
+translator_folder = configs.get('Folders', 'translator folder')
+mods_folder = configs.get('Folders', 'mod folder')
+string_folder = translator_folder+"\\strings\\"+ configs.get('Mods', 'mod')
+user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
 
 ignorable = {
     "ascii_art",
@@ -70,7 +70,14 @@ j_desc = []
 start_name = []
 sounds = []
 messages = []
-message_key = ["not_ready_msg", "msg", "need_charges_msg", "need_fire_msg", "sound_msg", "no_deactivate_msg","menu_text"]
+message_key = ["reduced_desc", 
+			   "apply_message",
+			   "remove_message", 
+			   "memorial_message", 
+			   "mutagen_message", 
+			   "iv_message",
+			   "messages",
+			   ]
 attacks = []
 buffes = []
 buffes_key = ["static_buffs", "onmove_buffs", "onmiss_buffs", "onattack_buffs", "onblock_buffs", "ondodge_buffs", "onpause_buffs"]
@@ -118,6 +125,7 @@ def cleaning (lis):
 	return temp
 
 def get_item(item, lis, tag):
+
 	if type(item[tag]) == dict:
 		for i in item[tag].values():
 			lis.append(i)
@@ -167,19 +175,11 @@ def get_items_tags(item, tags, key_tags, check):
 		sounds.append(item["sound"])
 		check = True
 
-	if "messages" in tags:
-		get_item(item, messages,"messages")
-		check = True
-	if "mutagen_message" in tags:
-		get_item(item, messages,"mutagen_message")
-		check = True
-	if "iv_message" in tags:
-		get_item(item, messages,"iv_message")
-		check = True
-	if "memorial_message" in tags:
-		get_item(item, messages,"memorial_message")
-		check = True
-		
+	for key in message_key:
+		if key in tags:
+			get_item(item, messages, key)
+			check = True
+
 	if "use_action" in tags and "not_ready_msg" in item["use_action"]:
 		get_item(item["use_action"], messages,"not_ready_msg")
 
@@ -215,7 +215,7 @@ def get_items_tags(item, tags, key_tags, check):
 
 	for key in buffes_key:
 		if key in tags:
-			buff =  unpack_list(item[key])
+			buff = unpack_list(item[key])
 			if "name" in buff:
 				get_item(buff, buffes, "name")
 			if "description" in buff:
@@ -528,7 +528,7 @@ def updater(user_folder, translated = True):
 						check_for_updates("messages", record, messages)	
 					if "attacks" in record.keys():
 						check_for_updates("attacks", record, attacks)			
-						
+
 					with open (root + "\\" + file, "w+", encoding = "utf-8") as user:
 						user.write('[\n  {\n')
 						check = False
@@ -598,6 +598,7 @@ def check_for_new_tags(tags, item, record):
 		("need_charges_msg" in item["use_action"] or "need_fire_msg" in item["use_action"])) and 
 		("messages" not in record.keys())):
 		record["messages"] = {}
+
 	### Attacks ###
 	if "attacks" in tags and "attacks" not in record.keys():
 		if "attack_text_npc" or "attack_text_u" in item["attacks"]:

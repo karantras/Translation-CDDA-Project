@@ -17,14 +17,6 @@ game_folder = configs.get('Folders', 'game folder')
 mods_folder = configs.get('Folders', 'mod folder')
 translator_folder = configs.get('Folders', 'translator folder')
 
-def check(configs, translator_folder, __file__):
-	if translator_folder != os.getcwd():
-		trans_path = os.getcwd()
-		configs['Folders']["translator folder"] = trans_path
-		with open ('configs.ini', 'w') as configfiles:
-			configs.write(configfiles)	
-		translator_folder = configs.get('Folders', 'translator folder')
-
 class Translator(tk.Frame):
 	def __init__(self, parent):
 		tk.Frame.__init__(self, parent, background="#333333")   
@@ -115,7 +107,6 @@ class TextRedirector(object):
 def main():
 	root = tk.Tk()
 	app = Translator(root)
-	check(configs, translator_folder, __file__)
 	root.iconbitmap('icon.ico')
 	root.mainloop()
 

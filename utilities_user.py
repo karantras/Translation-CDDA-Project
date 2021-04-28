@@ -15,15 +15,15 @@ messages = []
 attacks = []
 
 
-# configs = ConfigParser()
-# configs.read('configs.ini')
+configs = ConfigParser()
+configs.read('configs.ini')
 
-# mod = configs.get('Mods', 'mod')
-# game_folder = configs.get('Folders', 'game folder')
-# translator_folder = configs.get('Folders', 'translator folder')
-# mods_folder = configs.get('Folders', 'mod folder')
-# string_folder = translator_folder+"\\strings\\"+ configs.get('Mods', 'mod')
-# user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
+mod = configs.get('Mods', 'mod')
+game_folder = configs.get('Folders', 'game folder')
+translator_folder = configs.get('Folders', 'translator folder')
+mods_folder = configs.get('Folders', 'mod folder')
+string_folder = translator_folder+"\\strings\\"+ configs.get('Mods', 'mod')
+user_folder = translator_folder+"\\user\\"+ configs.get('Mods', 'mod')
 
 ### Replacer's functions ###
 def open_file(file):
@@ -246,4 +246,4 @@ def final_check(string, x):
 		string = string.replace('\n}', '\n    }')
 	return string
 
-# replacer(user_folder, mods_folder)
+replacer(user_folder, mods_folder, mod)
