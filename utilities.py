@@ -77,10 +77,13 @@ message_key = ["reduced_desc",
 			   "mutagen_message", 
 			   "iv_message",
 			   "messages",
+			   "holster_prompt",
+			   "holster_msg"
 			   ]
 attacks = []
 buffes = []
 buffes_key = ["static_buffs", "onmove_buffs", "onmiss_buffs", "onattack_buffs", "onblock_buffs", "ondodge_buffs", "onpause_buffs"]
+replicas = []
 
 key_tags = [names, desc, j_desc, start_name, sounds, messages, attacks, buffes]
 key_words = ["[Names]",
@@ -91,7 +94,8 @@ key_words = ["[Names]",
 			"[Monster massages]",
 			"[Messages]",
 			"[Attacks]",
-			"[Buffes]"]
+			"[Buffes]",
+			"[Replicas]"]
 
 ####### Folder selection's functions #######
 
@@ -141,12 +145,16 @@ def get_item(item, lis, tag):
 	
 def get_items_tags(item, tags, key_tags, check):
 
+	#### Names ####
+
 	if 'name' in tags:
 		get_item(item, names, "name")
 		check = True
 	if 'intensity_levels' in tags and "name" in item["intensity_levels"][0]:
 		get_item(item["intensity_levels"][0], names, "name")
 		check = True
+
+	#### Descriptions ####
 
 	if 'description' in tags:
 		get_item(item, desc, "description")
@@ -156,13 +164,19 @@ def get_items_tags(item, tags, key_tags, check):
 		get_item(item, desc, "desc")
 		check = True
 
+	#### Job descriptions ####
+
 	if "job_description" in tags:
 		get_item(item, j_desc,'job_description')
 		check = True
+
+	#### Start names ####
 								
 	if "start_name" in tags:
 		start_name.append(item['start_name'])
 		check = True
+
+	#### Sounds ####
 
 	if "bash" in tags:
 		bash = item["bash"]
@@ -175,6 +189,8 @@ def get_items_tags(item, tags, key_tags, check):
 		sounds.append(item["sound"])
 		check = True
 
+	#### Messages ####
+
 	for key in message_key:
 		if key in tags:
 			get_item(item, messages, key)
@@ -182,15 +198,19 @@ def get_items_tags(item, tags, key_tags, check):
 
 	if "use_action" in tags and "not_ready_msg" in item["use_action"]:
 		get_item(item["use_action"], messages,"not_ready_msg")
+		check = True
 
 	if "use_action" in tags and "msg" in item["use_action"]:
 		get_item(item["use_action"], messages,"msg")
+		check = True
 
 	if "use_action" in tags and "need_charges_msg" in item["use_action"]:
 		get_item(item["use_action"], messages,"need_charges_msg")
+		check = True
 
 	if "use_action" in tags and "need_fire_msg" in item["use_action"]:
 		get_item(item["use_action"], messages,"need_fire_msg")
+		check = True
 
 	if "miss_messages" in tags:
 		for i in item["miss_messages"]:
@@ -203,6 +223,8 @@ def get_items_tags(item, tags, key_tags, check):
 		messages.append(message["message"])
 		check = True
 
+	#### Attacks ####
+
 	if "attacks" in tags:
 		attack = item["attacks"]
 		if type(attack) == list:
@@ -213,6 +235,8 @@ def get_items_tags(item, tags, key_tags, check):
 			attacks.append(attack["attack_text_npc"])
 		check = True
 
+	#### Buffes ####
+
 	for key in buffes_key:
 		if key in tags:
 			buff = unpack_list(item[key])
@@ -221,6 +245,16 @@ def get_items_tags(item, tags, key_tags, check):
 			if "description" in buff:
 				get_item(buff, buffes, "description")
 			check = True
+
+	#### Replicas ####
+
+	if "text" in tags:
+		get_item(item, replicas, "text")
+		check = True
+
+	if "dynamic_line" in tags:
+		get_item(item, replicas, "dynamic_line")
+		check = True
 
 	return check
 
@@ -247,12 +281,15 @@ def extractor (path, mod, translator_folder):
 				global messages
 				global attacks
 				global buffes
+				global replicas
+
 				file =_file[ : _file.find(".json") - 0]
 				if file not in ignorable:
 					new_root = mod + (mod.join(root.split(mod)[-1:]))
 
 					user_root = translator_folder + "\\user\\" + new_root
 					user_file = user_root + "\\" + file + ".json"
+
 
 					string_root = translator_folder + "\\strings\\" + new_root
 					string_file = string_root + "\\" + file + ".txt"
@@ -286,6 +323,7 @@ def extractor (path, mod, translator_folder):
 							messages = cleaning(messages)
 							attacks = cleaning(attacks)
 							buffes = cleaning(buffes)
+							replicas = cleaning(replicas)
 							
 							if check:
 								if not os.path.exists(user_root):
@@ -293,7 +331,6 @@ def extractor (path, mod, translator_folder):
 
 								if not os.path.exists(string_root):
 									os.makedirs(string_root)
-
 								with open (user_file,'w+', encoding = 'utf-8') as user:
 									create_dictionary(user, key_tags)
 								
@@ -308,6 +345,7 @@ def extractor (path, mod, translator_folder):
 						messages.clear()
 						attacks.clear()
 						buffes.clear()
+						replicas.clear()
 
 	print(f"Already existed files: {existed_files}")
 	print(f"Total extracted files: {count_file}")
@@ -322,7 +360,8 @@ def create_dictionary(user, key_tags):
 	dict_start = {a : a for a in start_name}
 	dict_mess = {a : a for a in messages}
 	dict_atta = {a : a for a in attacks}
-	dict_buff = {a: a for a in buffes}
+	dict_buff = {a : a for a in buffes}
+	dict_repl = {a : a for a in replicas}
 
 	check = False
 	user.write('[\n  {\n')
@@ -353,9 +392,15 @@ def create_dictionary(user, key_tags):
 	if len(dict_atta) != 0:
 		checking(check, user)
 		check = dict_writer(user, dict_atta, "attacks")
+
 	if len(dict_buff) != 0:
 		checking(check, user)
 		check = dict_writer(user, dict_buff, "buffes")
+
+	if len(dict_repl) != 0:
+		checking(check, user)
+		check = dict_writer(user, dict_repl, "replicas")
+
 	user.write('\n  }\n]')
 	
 def checking(check, file):
@@ -443,6 +488,9 @@ def list_converter (file, index):
 			if x == "[Attacks]":
 				index = list_writer(attacks, strings, index)
 
+			if x == "[Replicas]":
+				index = list_writer(replicas, strings, index)
+
 def list_writer(e_list, strings, index):
 	for item in strings[1+index:]:
 		index += 1
@@ -502,6 +550,8 @@ def updater(user_folder, translated = True):
 							errors = change_dict(record["messages"], messages, file, errors, index = 0)	
 						if "attacks" in record.keys():
 							errors = change_dict(record["attacks"], attacks, file, errors, index = 0)
+						if "replicas" in record.keys():
+							errors = change_dict(record["replicas"], replicas, file, errors, index = 0)
 					try:
 						if type(objects) == str:
 							tags = objects.keys()
@@ -527,11 +577,16 @@ def updater(user_folder, translated = True):
 					if "messages" in record.keys():
 						check_for_updates("messages", record, messages)	
 					if "attacks" in record.keys():
-						check_for_updates("attacks", record, attacks)			
+						check_for_updates("attacks", record, attacks)
+					if "buffes" in record.keys():
+						check_for_updates("buffes", record, buffes)
+					if "replicas" in record.keys():	
+						check_for_updates("replicas", record, replicas)		
 
 					with open (root + "\\" + file, "w+", encoding = "utf-8") as user:
 						user.write('[\n  {\n')
 						check = False
+
 						if "names" in record.keys() and len(record["names"]) != 0:
 							check = dict_writer(user, record["names"], "names")
 
@@ -555,10 +610,17 @@ def updater(user_folder, translated = True):
 							checking(check, user)
 							check = dict_writer(user, record["attacks"], "attacks")
 
+						if "buffes" in record.keys() and len(record["buffes"]) != 0:
+							checking(check, user)
+							check = dict_writer(user, record["buffes"], "buffes")
+
+						if "replicas" in record.keys() and len(record["replicas"]) != 0:
+							checking(check, user)
+							check = dict_writer(user, record["replicas"], "replicas")
+
 						user.write('\n  }\n]')
 
 					strings_writer(root.replace("user", "strings") + "\\" + file.replace("json", "txt"), root +  "\\" + file, file, update = True)
-
 			names.clear()
 			desc.clear()
 			j_desc.clear()
@@ -566,6 +628,8 @@ def updater(user_folder, translated = True):
 			sounds.clear()
 			messages.clear()
 			attacks.clear()
+			buffes.clear()
+			replicas.clear()
 
 	print(f"Total errors: {errors}")
 
@@ -588,8 +652,8 @@ def check_for_new_tags(tags, item, record):
 		("memorial_messages" in tags) or	
 		("mutagen_message" in tags)) and 
 		("messages" not in record.keys())):
-
 			record["messages"] = {}	
+
 	if "spawn_item" in tags and "message" in item["spawn_item"] and "messages" not in record.keys():
 		record["messages"] = {}		
 
@@ -604,6 +668,15 @@ def check_for_new_tags(tags, item, record):
 		if "attack_text_npc" or "attack_text_u" in item["attacks"]:
 			record["attacks"] = {}
 
+	### Buffes ###
+	# if "attacks" in tags and "attacks" not in record.keys():
+	# 	if "attack_text_npc" or "attack_text_u" in item["attacks"]:
+	# 		record["attacks"] = {}
+
+	### Replicas ###
+	if ("text" in tags or "dynamic_line" in tags) and "replicas" not in record.keys():
+		record["attacks"] = {}
+
 def check_for_updates(key, old_dict, new_list):
 	my_dict = old_dict[key]
 	value = list(my_dict.values())
@@ -615,4 +688,4 @@ def check_for_updates(key, old_dict, new_list):
 
 # select_mod(configs)
 # extractor(configs.get('Folders', 'mod folder'), configs.get('Mods', 'mod'), translator_folder)
-# updater(user_folder, True)
+updater(user_folder, True)

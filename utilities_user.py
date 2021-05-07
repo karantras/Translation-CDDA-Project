@@ -13,6 +13,7 @@ sounds = []
 mo_mess  = []
 messages = []
 attacks = []
+replicas = []
 
 
 configs = ConfigParser()
@@ -47,6 +48,7 @@ def replacer(user_path, mod_path, mod):
 			global sounds
 			global messages
 			global attacks
+			global replicas
 
 			if file != ".json":
 				try:
@@ -77,6 +79,10 @@ def replacer(user_path, mod_path, mod):
 					if "attacks" in user_objects.keys():
 						attacks = user_objects["attacks"]
 
+					if "replicas" in user_objects.keys():
+						replicas = user_objects["replicas"]
+
+
 					### Replacer part (Will add new tags)### 
 					for objects in base_objects:
 						for key, item in objects.items():
@@ -91,30 +97,33 @@ def replacer(user_path, mod_path, mod):
 
 								if key == "job_description":
 									minor_rep(objects, item, key, j_desc)
+
+
+								if key == "sound":
+									minor_rep(objects, item, key, sounds)
+
+								if ((key == "messages")	or 
+								   (key == "mutagen_message") or
+								   (key == "memorial_message") or
+								   (key == "iv_message")):
+									minor_rep(objects, item, key, messages)
+
+								if key == "spawn_item" and "message" in item:
+									minor_rep(item, item["message"], "message", messages)
+
+								if  key == "use_action" and "msg" in item:
+									minor_rep(item, item["msg"], "msg", messages)
+
+								if key == "attacks":
+									if type(item) == list:
+										item = item[0]
+									if "attack_text_npc" in item.keys():
+										minor_rep(item, item["attack_text_npc"], "attack_text_npc", attacks)
+								
+								if key == "text": 
+									minor_rep(objects, item, key, replicas)
 							except KeyError:
 								print(f"Errno3 - missing key. Key {item} doesn't exist in user {file}.")
-
-							if key == "sound":
-								minor_rep(objects, item, key, sounds)
-
-							if ((key == "messages")	or 
-							   (key == "mutagen_message") or
-							   (key == "memorial_message") or
-							   (key == "iv_message")):
-								minor_rep(objects, item, key, messages)
-
-							if key == "spawn_item" and "message" in item:
-								minor_rep(item, item["message"], "message", messages)
-
-							if  key == "use_action" and "msg" in item:
-								minor_rep(item, item["msg"], "msg", messages)
-
-							if key == "attacks":
-								if type(item) == list:
-									item = item[0]
-								if "attack_text_npc" in item.keys():
-									minor_rep(item, item["attack_text_npc"], "attack_text_npc", attacks)
-														
 					### Write new json part
 					final_folder = root.replace("user","translated")
 					if not os.path.exists(final_folder):
@@ -145,17 +154,21 @@ def replacer(user_path, mod_path, mod):
 
 
 def minor_rep(objects, item, key, user_objects):
-	if type(item) == dict:
-		for key, value in item.items():
-			item[key] = user_objects[value]
-	elif type(item) == list:
-		x = 0
-		for value in item:
-			item[x] = user_objects[value]
-			x += 1
-	else:
-		objects[key] = user_objects[item]
-
+	try:
+		if type(item) == dict:
+			for key, value in item.items():
+				item[key] = user_objects[value]
+		elif type(item) == list:
+			x = 0
+			for value in item:
+				item[x] = user_objects[value]
+				x += 1
+		else:
+			objects[key] = user_objects[item]
+	except TypeError:
+		print(user_objects)
+		print(f"TypeError with {item}")
+		
 ### Formating functions ###
 def clear_sym(string):
 	string = string
@@ -177,7 +190,9 @@ def req_new(value, x, string = "", key = ""):
 		value = str(value).lower()
 	elif type(value) == str:
 		value = '"' + clear_sym(value) + '"' #### Проверка на наличие спецсимволов (Необходимо только для строк)
-
+	elif value is None:
+		value = "null"
+		
 	### Комплексные структуры ###
 	elif type(value) == list or type(value) == dict:
 		x += 2
