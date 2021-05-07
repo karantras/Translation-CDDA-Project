@@ -1,0 +1,20 @@
+[
+  {
+    "type" : "start_location",
+    "id" : "psy_cabin",
+    "name" : "Хижина",
+    "terrain" : ["cabin"]
+  },
+  {
+    "type" : "scenario",
+    "id" : "awakened",
+    "name" : "Пробужденный",
+    "points" : 0,
+    "description" : "Ты всегда был эксцентричным, возможно даже чутка сумасшедшим. Но вот весь мир поглотил хаос и разруха. Уже ничто не будет таким, как прежде. И именно сейчас твой разум окончательно пробудился, чтобы открыть потаенные загадки мира.",
+    "start_name" : "Research Center",
+    "allowed_locs" : ["sloc_cabin", "sloc_bookstore", "sloc_forest", "sloc_house_boarded", "sloc_house"],
+    "professions" : ["awakened"],
+    "forbidden_traits" : ["OPTIMISTIC", "PSYCHOPATH", "WILLPOWER", "FEARLESS"],
+    "flags" : ["OUTSIDE"]
+  }
+]

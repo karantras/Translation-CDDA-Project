@@ -1,0 +1,292 @@
+[
+  {
+    "type" : "profession",
+    "id" : "cddaxp_hamarine",
+    "name" : "Тяжёлый штурмовой морпех",
+    "description" : "Вы — отморозок в доспехах, неудержимый солдат с чертовски большой пушкой. Но в тоже время одинокий выживший без поддержки… Не тратьте в пустую свою огневую мощь!",
+    "points" : 9,
+    "CBMs" : [
+      "bio_armor_head",
+      "bio_armor_torso",
+      "bio_armor_arms",
+      "bio_armor_legs",
+      "bio_ups",
+      "bio_power_storage_mkII",
+      "bio_batteries"
+    ],
+    "skills" : [{"level" : 4, "name" : "gun"}, {"level" : 5, "name" : "smg"}, {"level" : 4, "name" : "melee"}],
+    "items" : {
+      "both" : [        "helmet_army",
+        "mask_bal",
+        "jacket_army",
+        "gloves_tactical",
+        "pants_army",
+        "socks",
+        "boots_combat",
+        "water_clean",
+        "cddaxp_r135ppgm",
+        "laser_pack",
+        "laser_pack",
+        "laser_pack",
+        "laser_pack",
+        "laser_pack",
+        "knife_combat",
+        "molle_pack",
+        "mre_beef_box"
+    ],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  },
+  {
+    "type" : "profession",
+    "id" : "cddaxp_ninja",
+    "name" : "Ниндзя",
+    "description" : "Вы — современный ниндзя, идущий по пути шиноби и сражающийся словно наёмник из феодальной Японии. Возникает вопрос: вы фальшивка или настоящий мастер ниндзюцу?",
+    "points" : 7,
+    "skills" : [      {"level" : 4, "name" : "dodge"},
+      {"level" : 4, "name" : "unarmed"},
+      {"level" : 5, "name" : "throw"},
+      {"level" : 5, "name" : "melee"}
+    ],
+    "items" : {
+      "both" : [        "balclava",
+        "keikogi",
+        "gloves_wraps",
+        "zubon_gi",
+        "tabi_dress",
+        "geta",
+        "water_clean",
+        "cddaxp_sai",
+        "cddaxp_happo",
+        "cddaxp_happo",
+        "cddaxp_happo",
+        "fire_drill",
+        "cddaxp_shuriken",
+        "backpack_leather",
+        "meat_smoked"
+    ],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  },
+  {
+    "type" : "profession",
+    "id" : "cddaxp_bioninja",
+    "name" : "Техно ниндзя",
+    "description" : "Вы — современный киберниндзя МК II «Отомо», идущий по пути шиноби, чтобы корпорация гордилась вами. Возникает вопрос: вы ошибка или настоящий робот-мастер ниндзюцу?",
+    "points" : 9,
+    "CBMs" : [
+      "bio_blade",
+      "bio_cqb",
+      "bio_cloak",
+      "bio_speed",
+      "bio_uncanny_dodge",
+      "bio_power_storage_mkII",
+      "bio_batteries"
+    ],
+    "skills" : [      {"level" : 4, "name" : "dodge"},
+      {"level" : 4, "name" : "unarmed"},
+      {"level" : 5, "name" : "throw"},
+      {"level" : 5, "name" : "melee"}
+    ],
+    "items" : {
+      "both" : [        "balclava",
+        "keikogi",
+        "gloves_wraps",
+        "zubon_gi",
+        "tabi_dress",
+        "geta",
+        "water_clean",
+        "cddaxp_kusarigama",
+        "cddaxp_happo",
+        "cddaxp_happo",
+        "cddaxp_happo",
+        "fire_drill",
+        "cddaxp_shuriken",
+        "backpack_leather",
+        "meat_smoked"
+    ],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  },
+  {
+    "type" : "profession",
+    "id" : "cddaxp_hunter",
+    "name" : "Охотник",
+    "description" : "Вы просто любите охоту. Теперь весь мир превратился в бардак, а для вас это словно одно большое весёлое сафари…",
+    "points" : 3,
+    "skills" : [      {"level" : 1, "name" : "gun"},
+      {"level" : 2, "name" : "rifle"},
+      {"level" : 2, "name" : "survival"},
+      {"level" : 1, "name" : "melee"}
+    ],
+    "items" : {
+      "both" : [        "hat_hunting",
+        "binoculars",
+        "longshirt",
+        "army_top",
+        "backpack",
+        "back_holster",
+        "water_clean",
+        "lighter",
+        "browning_blr",
+        "blrmag",
+        "270win_jsp",
+        "knife_hunting",
+        "granola",
+        "pants_army",
+        "socks",
+        "boots_steel"
+    ],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  },
+  {
+    "type" : "profession",
+    "id" : "cddaxp_csanalyst",
+    "name" : "Эксперт-криминалист",
+    "description" : "Вы — аналитик мест преступлений, также известный как эксперт-криминалист. Вы медик, химик, а также детектив. Так что теперь вы просто бесполезны…",
+    "points" : 4,
+    "skills" : [      {"level" : 2, "name" : "firstaid"},
+      {"level" : 2, "name" : "cooking"},
+      {"level" : 1, "name" : "gun"},
+      {"level" : 2, "name" : "pistol"},
+      {"level" : 2, "name" : "unarmed"}
+    ],
+    "traits" : ["PROF_MED", "PROF_PD_DET"],
+    "items" : {
+      "both" : [        "sunglasses",
+        "dress_shirt",
+        "tie_skinny",
+        "kevlar",
+        "sholster",
+        "badge_detective",
+        "pants",
+        "socks",
+        "dress_shoes",
+        "backpack",
+        "water_clean",
+        "flashlight",
+        "m9",
+        "m9mag",
+        "9mm",
+        "chemistry_set",
+        "magnifying_glass"
+    ],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  },
+  {
+    "type" : "profession",
+    "id" : "cddaxp_bionic_surgeon",
+    "name" : "Бионический хирург",
+    "description" : "Вы профессиональный кибер-хирург. Вы способны быстро и надёжно провести любые операции по установки или удалению бионики.",
+    "points" : 6,
+    "CBMs" : [
+      "bio_int_enhancer",
+      "bio_dex_enhancer",
+      "bio_laser",
+      "bio_power_storage_mkII",
+      "bio_batteries",
+      "bio_flashlight"
+    ],
+    "skills" : [      {"level" : 3, "name" : "firstaid"},
+      {"level" : 3, "name" : "computer"},
+      {"level" : 3, "name" : "electronics"}
+    ],
+    "traits" : ["PROF_MED"],
+    "items" : {
+      "both" : [        "mask_filter",
+        "dress_shirt",
+        "coat_lab",
+        "gloves_medical",
+        "pants",
+        "socks",
+        "dress_shoes",
+        "water_clean",
+        "scalpel",
+        "bandages",
+        "disinfectant",
+        "antibiotics",
+        "stethoscope"
+    ],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  },
+  {
+    "type" : "profession",
+    "id" : "cddaxp_butcher",
+    "name" : "Мясник",
+    "description" : "Вы знаете каким должно быть мясо. И уж точно знаете, как его убить!",
+    "points" : 2,
+    "skills" : [{"level" : 2, "name" : "cooking"}, {"level" : 4, "name" : "survival"}],
+    "items" : {
+      "both" : [        "knife_butcher",
+        "water_clean",
+        "sandwich_t",
+        "kufi",
+        "jacket_chef",
+        "apron_leather",
+        "pants_checkered",
+        "socks",
+        "boots_rubber"
+    ],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  },
+  {
+    "type" : "profession",
+    "id" : "cddaxp_phuman",
+    "name" : "Пост человек",
+    "description" : "Вы — последняя ступень эволюции человечества. Генетическое чудо, готовое править всеми ими, но… больше некем править. Вокруг катаклизм и вы почти голый.",
+    "points" : 6,
+    "traits" : ["STR_UP_2", "DEX_UP_2", "INT_UP_2", "PER_UP_2"],
+    "items" : {
+      "both" : ["undershirt", "tshirt", "ragpouch", "shorts", "socks", "leathersandals"],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  },
+  {
+    "type" : "profession",
+    "id" : "cddaxp_rioteer",
+    "name" : "Бунтовщик",
+    "description" : "Вы всегда были против системы и теперь она не работает! Итак, теперь вы против… ЧЕГО-НИБУДЬ! ЕБАТЬ, ДА!!!",
+    "points" : 5,
+    "skills" : [      {"level" : 3, "name" : "dodge"},
+      {"level" : 2, "name" : "unarmed"},
+      {"level" : 3, "name" : "throw"},
+      {"level" : 2, "name" : "melee"}
+    ],
+    "items" : {
+      "both" : [        "helmet_motor",
+        "tshirt",
+        "cddaxp_srtrenchcoat",
+        "slingpack",
+        "elbow_pads",
+        "gloves_fingerless",
+        "cddaxp_rcpants",
+        "knee_pads",
+        "socks",
+        "boots",
+        "lighter",
+        "gasoline",
+        "flamethrower_crude",
+        "hose",
+        "cddaxp_bfclosed",
+        "colamdew",
+        "colamdew",
+        "colamdew",
+        "sandwich_t"
+    ],
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  }
+]

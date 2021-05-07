@@ -1,0 +1,8 @@
+[
+  {
+    "type" : "ammunition_type",
+    "id" : "psychic",
+    "name" : "психика",
+    "default" : "psychic_crystal"
+  }
+]

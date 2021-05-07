@@ -1,0 +1,12 @@
+[
+  {
+    "type" : "MOD_INFO",
+    "id" : "adv_gear",
+    "name" : "Advanced Gear (НАНОТЕХНОЛОГИИ)",
+    "authors" : ["Shard"],
+    "maintainers" : ["The Goat God"],
+    "description" : "Добовляет «хай-энд» контент, основанный на невероятно продвинутых нанотехнологичных предметах и 3D-печати.",
+    "category" : "items",
+    "dependencies" : ["dda"]
+  }
+]

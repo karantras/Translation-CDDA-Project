@@ -1,0 +1,12 @@
+[
+  {
+    "type" : "MOD_INFO",
+    "id" : "growable-pots",
+    "name" : "Садовые горшки",
+    "authors" : ["Honcharuk"],
+    "description" : "Позволяет выращивать семена в специальных садовых горшках, которые можно носить с собой. Идеально подходит для странствующего садовника.",
+    "category" : "items",
+    "dependencies" : ["dda"],
+    "obsolete" : false
+  }
+]

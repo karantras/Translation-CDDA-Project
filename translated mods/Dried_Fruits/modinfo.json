@@ -1,0 +1,12 @@
+[
+  {
+    "type" : "MOD_INFO",
+    "id" : "dried_fruits",
+    "name" : "Сухофрукты",
+    "authors" : ["Wayticus"],
+    "maintainers" : ["Wayticus"],
+    "description" : "Сладкие сухофрукты, которые станут прекрасной заменой пресным дегидрированным фруктам.",
+    "category" : "items",
+    "dependencies" : ["dda"]
+  }
+]

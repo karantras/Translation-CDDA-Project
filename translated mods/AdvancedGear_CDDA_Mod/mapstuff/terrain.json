@@ -1,0 +1,116 @@
+[
+  {
+    "type" : "terrain",
+    "id" : "t_nano_floor",
+    "name" : "нанотех пол",
+    "description" : "Совершенно гладкий пол с соответствующей крышей из нанитов. Легко выдерживает любые нагрузки.",
+    "symbol" : ".",
+    "max_volume" : 4000,
+    "color" : "light_gray",
+    "move_cost" : 2,
+    "flags" : ["TRANSPARENT", "SUPPORTS_ROOF", "COLLAPSES", "INDOORS", "FLAT", "ROAD"],
+    "bash" : {
+      "str_min" : 500,
+      "str_max" : 1500,
+      "sound" : "шшшшш!",
+      "sound_fail" : "вумп!",
+      "sound_vol" : 2,
+      "sound_fail_vol" : 7,
+      "ter_set" : "t_null",
+      "items" : [{"item" : "nanite_cluster", "count" : [2, 12]}]
+    },
+    "deconstruct" : {"ter_set" : "t_pit_shallow", "items" : [{"item" : "xl_nanite_cluster"}]}
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_nano_wall",
+    "name" : "нанотех стена",
+    "description" : "Очень прочная и идеально гладкая стена из нанитов. Поддерживает крышу и защищает практически от всего.",
+    "symbol" : "LINE_OXOX",
+    "color" : "light_gray",
+    "move_cost" : 0,
+    "coverage" : 100,
+    "roof" : "t_nano_roof",
+    "flags" : ["NOITEM", "SUPPORTS_ROOF", "WALL", "AUTO_WALL_SYMBOL", "BLOCK_WIND"],
+    "connects_to" : "WALL",
+    "bash" : {
+      "str_min" : 500,
+      "str_max" : 1500,
+      "sound" : "шшшш!",
+      "sound_fail" : "вумп!",
+      "sound_vol" : 2,
+      "sound_fail_vol" : 7,
+      "ter_set" : "t_pit_shallow",
+      "items" : [{"item" : "nanite_cluster", "count" : [2, 12]}]
+    },
+    "deconstruct" : {"ter_set" : "t_pit_shallow", "items" : [{"item" : "xl_nanite_cluster"}]}
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_nano_door_c",
+    "name" : "закрытый нанотех люк",
+    "description" : "Запечатанный люк из нанитов. Эта дверь способна выдержать практически что угодно.",
+    "symbol" : "+",
+    "color" : "light_gray",
+    "move_cost" : 0,
+    "roof" : "t_nano_roof",
+    "flags" : ["DOOR", "NOITEM", "CONNECT_TO_WALL"],
+    "open" : "t_nano_door_o",
+    "bash" : {
+      "str_min" : 500,
+      "str_max" : 1500,
+      "sound" : "шшшш!",
+      "sound_fail" : "вумп!",
+      "sound_vol" : 2,
+      "sound_fail_vol" : 7,
+      "ter_set" : "t_pit_shallow",
+      "items" : [{"item" : "nanite_cluster", "count" : [2, 12]}]
+    },
+    "deconstruct" : {"ter_set" : "t_pit_shallow", "items" : [{"item" : "xl_nanite_cluster"}]}
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_nano_door_o",
+    "name" : "открытый нанотех люк",
+    "description" : "Открытый люк из нанитов. Эта дверь способна выдержать практически что угодно.",
+    "symbol" : "'",
+    "color" : "light_gray",
+    "move_cost" : 2,
+    "roof" : "t_nano_roof",
+    "flags" : ["TRANSPARENT", "FLAT", "CONNECT_TO_WALL", "ROAD"],
+    "close" : "t_nano_door_c",
+    "bash" : {
+      "str_min" : 500,
+      "str_max" : 1500,
+      "sound" : "шшшш!",
+      "sound_fail" : "вумп!",
+      "sound_vol" : 2,
+      "sound_fail_vol" : 7,
+      "ter_set" : "t_pit_shallow",
+      "items" : [{"item" : "nanite_cluster", "count" : [2, 12]}]
+    },
+    "deconstruct" : {"ter_set" : "t_pit_shallow", "items" : [{"item" : "xl_nanite_cluster"}]}
+  },
+  {
+    "type" : "terrain",
+    "id" : "t_nano_roof",
+    "name" : "нанотех крыша",
+    "description" : "Совершенно гладкая крыша из нанитов, способная выдержать практически всё.",
+    "symbol" : ".",
+    "color" : "light_gray",
+    "move_cost" : 2,
+    "flags" : ["TRANSPARENT", "FLAT"],
+    "bash" : {
+      "str_min" : 500,
+      "str_max" : 1500,
+      "sound" : "шшшш!",
+      "sound_fail" : "вумп!",
+      "sound_vol" : 2,
+      "sound_fail_vol" : 7,
+      "ter_set" : "t_open_air",
+      "bash_below" : true,
+      "items" : [{"item" : "nanite_cluster", "count" : [2, 12]}]
+    },
+    "deconstruct" : {"ter_set" : "t_open_air", "items" : [{"item" : "xl_nanite_cluster"}]}
+  }
+]

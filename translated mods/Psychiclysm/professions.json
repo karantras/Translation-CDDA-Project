@@ -1,0 +1,27 @@
+[
+  {
+    "type" : "profession",
+    "id" : "awakened",
+    "name" : "Пробужденный",
+    "description" : "Ты всегда был эксцентричным, возможно даже чутка сумасшедшим. Но вот весь мир поглотил хаос и разруха. Уже ничто не будет таким, как прежде. И именно сейчас твой разум окончательно пробудился, чтобы открыть потаенные загадки мира.",
+    "points" : -1,
+    "flags" : ["SCEN_ONLY"],
+    "traits" : ["AWAKENED", "CHEMIMBALANCE"],
+    "items" : {
+      "both" : {        "items" : [          "pants",
+          "longshirt",
+          "socks",
+          "jacket_evac",
+          "sneakers",
+          "pockknife",
+          "water_clean",
+          "lighter",
+          "wristwatch"
+    ],
+        "entries" : [{"group" : "charged_cell_phone"}, {"group" : "mental_meds", "count" : 2}]
+    },
+      "male" : ["boxer_shorts"],
+      "female" : ["bra", "panties"]
+    }
+  }
+]

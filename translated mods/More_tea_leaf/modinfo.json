@@ -1,0 +1,12 @@
+[
+  {
+    "type" : "MOD_INFO",
+    "id" : "More tea leaf",
+    "name" : "Чайный мод",
+    "description" : "Добавляет семена чая, листья чая и новые виды чая.",
+    "category" : "items",
+    "maintainers" : ["Grim616"],
+    "dependencies" : ["dda"],
+    "path" : ""
+  }
+]

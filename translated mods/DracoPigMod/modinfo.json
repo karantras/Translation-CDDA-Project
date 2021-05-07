@@ -1,0 +1,13 @@
+[
+  {
+    "type" : "MOD_INFO",
+    "id" : "DracoPigMod",
+    "name" : "Поросячий мод",
+    "authors" : ["DracoGriffin"],
+    "description" : "Позволяет приручать поросей.",
+    "category" : "creatures",
+    "dependencies" : ["dda"],
+    "version" : "0.1",
+    "obsolete" : false
+  }
+]

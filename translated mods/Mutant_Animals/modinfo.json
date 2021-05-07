@@ -1,0 +1,11 @@
+[
+  {
+    "type" : "MOD_INFO",
+    "id" : "mutant_animals",
+    "name" : "Животные мутанты",
+    "authors" : ["Sunshine"],
+    "description" : "Нормальные животные со временем превращаются в странных или опасных мутантов.",
+    "category" : "creatures",
+    "dependencies" : ["dda"]
+  }
+]

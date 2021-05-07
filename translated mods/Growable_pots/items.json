@@ -1,0 +1,305 @@
+[
+  {
+    "type" : "GENERIC",
+    "id" : "gp_pot",
+    "symbol" : ")",
+    "color" : "brown",
+    "name" : {"str" : "садовый горшок"},
+    "description" : "Специальный горшок, в котором можно выращивать различные растения. Вы можете посадить в него всевозможные семена.",
+    "price" : 600,
+    "material" : ["clay"],
+    "weight" : "280 g",
+    "volume" : "2 L",
+    "pocket_data" : [{"max_contains_volume" : "1250 ml", "max_contains_weight" : "3 kg", "open_container" : true}],
+    "bashing" : 1,
+    "cutting" : 0,
+    "category" : "tools",
+    "to_hit" : 0
+  },
+  {
+    "type" : "GENERIC",
+    "abstract" : "gp_pot_growing",
+    "name" : {"str" : "садовый горшок (рассада)", "str_pl" : "садовые горшки (рассада)"},
+    "description" : "Садовый горшок с рассадой неизвестного. Если вы это читаете, то вы словили баг.",
+    "weight" : "480 g",
+    "symbol" : ")",
+    "color" : "brown",
+    "price" : "13 USD",
+    "material" : ["clay", "veggy"],
+    "volume" : "2500 ml",
+    "bashing" : 1,
+    "category" : "tools"
+  },
+  {
+    "type" : "GENERIC",
+    "abstract" : "gp_pot_grown",
+    "name" : {"str" : "садовый горшок (взрослое растение)", "str_pl" : "садовые горшки (взрослое растение)"},
+    "description" : "Садовый горшок со спелыми томатами. Если вы это читаете, то вы словили баг.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : "DISASSEMBLE"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_tomato",
+    "name" : {"str" : "садовый горшок (рассада помидоров)", "str_pl" : "садовые горшки (рассада помидоров)"},
+    "description" : "Садовый горшок с рассадой помидоров.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Помидоры созрели и готовы к сбору!",
+      "moves" : 0,
+      "target" : "gp_tomato_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_tomato_ready",
+    "name" : {"str" : "садовый горшок (зрелые помидоры)", "str_pl" : "садовые горшки (зрелые помидоры)"},
+    "description" : "Садовый горшок со спелыми томатами. Разберите, чтобы получить вкусные помидоры..",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_wheat",
+    "name" : {"str" : "садовый горшок (рассада пшеницы)", "str_pl" : "садовые горшки (рассада пшеницы)"},
+    "description" : "Садовый горшок с рассадой пшеницы.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Пшеница созрела и готова к сбору!",
+      "moves" : 0,
+      "target" : "gp_wheat_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_wheat_ready",
+    "name" : {"str" : "садовый горшок (пшеница)", "str_pl" : "садовые горшки (пшеница)"},
+    "description" : "Садовый горшок с созревшей пшеницой. Разберите, чтобы собрать её.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_hops",
+    "name" : {"str" : "садовый горшок (рассада хмеля)", "str_pl" : "садовые горшки (рассада хмеля)"},
+    "description" : "Садовый горшок с рассадой хмеля.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Хмель созрел и готов к сбору!",
+      "moves" : 0,
+      "target" : "gp_hops_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_hops_ready",
+    "name" : {"str" : "садовый горшок (хмель)", "str_pl" : "садовые горшки (хмель)"},
+    "description" : "Садовый горшок  с цветущим хмелем. Разберите, чтобы собрать их.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_buckwheat",
+    "name" : {"str" : "садовый горшок (рассада гречки)", "str_pl" : "садовые горшки (рассада гречки)"},
+    "description" : "Садовый горшок с рассадой гречки.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Гречиха созрела и готова к сбору!",
+      "moves" : 0,
+      "target" : "gp_buckwheat_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_buckwheat_ready",
+    "name" : {"str" : "садовый горшок (гречка)", "str_pl" : "садовые горшки (гречка)"},
+    "description" : "Садовый горшок с созревшей гречихой.  Разберите, чтобы собрать колосья.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_broccoli",
+    "name" : {"str" : "садовый горшок (рассада брокколи)", "str_pl" : "садовые горшки (рассада брокколи)"},
+    "description" : "Садовый горшок с рассадой брокколи.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Брокколи созрели и готовы к сбору!",
+      "moves" : 0,
+      "target" : "gp_broccoli_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_broccoli_ready",
+    "name" : {"str" : "садовый горшок (брокколи)", "str_pl" : "садовые горшки (брокколи)"},
+    "description" : "Садовый горшок с созревшими брокколи.  Разберите, чтобы собрать их.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_oats",
+    "name" : {"str" : "садовый горшок (рассада овса)", "str_pl" : "садовые горшки (рассада овса)"},
+    "description" : "Садовый горшок с рассадой овса.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Овёс созрел и готов к сбору!",
+      "moves" : 0,
+      "target" : "gp_oats_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_oats_ready",
+    "name" : {"str" : "садовый горшок (овёс)", "str_pl" : "садовые горшки (овёс)"},
+    "description" : "Садовый горшок с золотистыми зрелыми колосьями овса.  Разберите, чтобы собрать их.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_barley",
+    "name" : {"str" : "садовый горшок (рассада ячменя)", "str_pl" : "садовые горшки (рассада ячменя)"},
+    "description" : "Садовый горшок с рассадой ячменя.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Ячмень созрел и готов к сбору!",
+      "moves" : 0,
+      "target" : "gp_barley_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_barley_ready",
+    "name" : {"str" : "садовый горшок (ячмень)", "str_pl" : "садовые горшки (ячмень)"},
+    "description" : "Садовый горшок с созревшим ячменем.  Разберите, чтобы собрать его.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_carrot",
+    "name" : {"str" : "садовый горшок (рассада моркови)", "str_pl" : "садовые горшки (рассада моркови)"},
+    "description" : "Садовый горшок с рассадой моркови.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Морковь созрела и готова к сбору!",
+      "moves" : 0,
+      "target" : "gp_carrot_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_carrot_ready",
+    "name" : {"str" : "садовый горшок (морковь)", "str_pl" : "садовые горшки (морковь)"},
+    "description" : "Садовый горшок с созревшей морковью.  Разберите, чтобы собрать их. Держите подальше от кроликов.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_cotton_boll",
+    "name" : {"str" : "садовый горшок (рассада хлопка)", "str_pl" : "садовые горшки (рассада хлопка)"},
+    "description" : "Садовый горшок с рассадой хлопка.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Хлопок созрел и готов к сбору!",
+      "moves" : 0,
+      "target" : "gp_cotton_boll_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_cotton_boll_ready",
+    "name" : {"str" : "садовый горшок (хлопок)", "str_pl" : "садовые горшки (хлопок)"},
+    "description" : "Садовый горшок с созревшим хлопком.  Разберите, чтобы вытащить из хлопковых коробочек пушистые ватные волокна.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_cabbage",
+    "name" : {"str" : "садовый горшок (рассада капусты)", "str_pl" : "садовые горшки (рассада капусты)"},
+    "description" : "Садовый горшок с молодой капустой.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Кабачок созрел и готов к сбору!",
+      "moves" : 0,
+      "target" : "gp_cabbage_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_cabbage_ready",
+    "name" : {"str" : "садовый горшок (капуста)", "str_pl" : "садовые горшки (капуста)"},
+    "description" : "Садовый горшок с большим зрелым кабачком.  Разберите, чтобы собрать его.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_cucumber",
+    "name" : {"str" : "садовый горшок (рассада огурцов)", "str_pl" : "садовые горшки (рассада огурцов)"},
+    "description" : "Садовый горшок с рассадой огурца.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Огурцы созрели и готовы к сбору!",
+      "moves" : 0,
+      "target" : "gp_cucumber_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_cucumber_ready",
+    "name" : {"str" : "садовый горшок (огурцы)", "str_pl" : "садовые горшки (огурцы)"},
+    "description" : "Садовый горшок с созревшими огурцами.  Разберите, чтобы собрать их.",
+    "copy-from" : "gp_pot_grown"
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_garlic",
+    "name" : {"str" : "садовый горшок (рассада чеснока)", "str_pl" : "садовые горшки (рассада чеснока)"},
+    "description" : "Садовый горшок с рассадой чеснока.  Когда она созреет, активируйте горшок, чтобы подготовить его к сборку урожая.",
+    "copy-from" : "gp_pot_growing",
+    "use_action" : {
+      "type" : "delayed_transform",
+      "transform_age" : 432000,
+      "not_ready_msg" : "It isn't done growing yet.",
+      "msg" : "Чеснок созрел и готов к сбору!",
+      "moves" : 0,
+      "target" : "gp_garlic_ready"
+    }
+  },
+  {
+    "type" : "GENERIC",
+    "id" : "gp_garlic_ready",
+    "name" : {"str" : "садовый горшок (чеснок)", "str_pl" : "садовые горшки (чеснок)"},
+    "description" : "Садовый горшок с созревшим чесноком.  Разберите, чтобы собрать его или wave просто размахивайте им во все стороны и шугайте вампировЫ.",
+    "copy-from" : "gp_pot_grown"
+  }
+]

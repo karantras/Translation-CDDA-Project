@@ -1,0 +1,278 @@
+[
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "\"твит-твит-твит.\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "\"чик-чирик.\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "\"ку-ку-ёпта.\"",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "\"ку-ку. ку-ку.\"",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "свист и чириканье.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "птички поют.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "поющие птицы.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "птичье пение.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "перекличка лесных птиц.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "птичья трель.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "испуганные крики маленьких птичек.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "величественные звуки природы.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "громкое карканье.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "чириканье.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_songbird",
+    "sound" : "свист и трель.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "иномирная музыка.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "странные крики птиц-мутантов.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "неистовая песня птиц.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "эфирное гудение.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "крик неизвестной птицы.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "странные звуки иномирного леса.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "странные крики птиц-мутантов.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "неестественный гудящий звук.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "песнь нового мира.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "пронзительные крики неизвестной птицы.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "неподражаемая песня птиц.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "ужасные предсмертные крики.",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_bird_mutant_songbird",
+    "sound" : "завораживающая песня птиц.",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_dog_mutant_digiri",
+    "sound" : "\"ву-ву-ву-влухууууууу.\"",
+    "volume" : 60
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_dog_mutant_digiri",
+    "sound" : "\"рааааарх-рааааарх-раааарх.\"",
+    "volume" : 60
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_dog_mutant_digiri",
+    "sound" : "\"врууууу врууууу врууууу.\"",
+    "volume" : 60
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_dog_mutant_digiri",
+    "sound" : "\"Бджууум Бджуууум.\"",
+    "volume" : 60
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_deer_sick_crying",
+    "sound" : "\"Хеееееееееех!\"",
+    "volume" : 60
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_deer_sick_crying",
+    "sound" : "\"Ауууууууууу!\"",
+    "volume" : 60
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_deer_sick_crying",
+    "sound" : "\"Рррррррррр!\"",
+    "volume" : 60
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_deer_sick_crying",
+    "sound" : "\"Neeeeeeehuuuuuu!\"",
+    "volume" : 60
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Мне нужна помощь кое в чём…\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Не оставляй меня позади.\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Мы всегда будем друзьями, правда?\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Подойди ближе.\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Давай объединимся.\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"На помощь!  Я не умею плавать!\"",
+    "volume" : 40
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Не поможешь, а?\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Тут слишком темно! Ничего не видно!.\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Следуй за мной.  Я покажу тебе дорогу.\"",
+    "volume" : 30
+  },
+  {
+    "type" : "speech",
+    "speaker" : "mon_fish_mutant_whisper",
+    "sound" : "\"Нужно держаться вместе.\"",
+    "volume" : 30
+  }
+]

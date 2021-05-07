@@ -1,0 +1,14 @@
+[
+  {
+    "type" : "ammunition_type",
+    "id" : "bile_spit",
+    "name" : "Желчь",
+    "default" : "bile_spit"
+  },
+  {
+    "type" : "ammunition_type",
+    "id" : "mucus_spit",
+    "name" : "Слизь",
+    "default" : "mucus_spit"
+  }
+]
